@@ -5,6 +5,8 @@ class BooksController < ApplicationController
   end
 
   def study
+    @book = Book.find(params[:id])
+    authorize @book
   end
 
   def new
