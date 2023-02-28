@@ -4,6 +4,8 @@ class BooksController < ApplicationController
   end
 
   def study
+    @book = Book.find(params[:id])
+    authorize @book
   end
 
   def new
@@ -14,9 +16,9 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     authorize @book
     if @book.save
-      redirect_to 'books_edit'
+      redirect_to "books_edit"
     else
-      render 'books_edit', status: :unprocessable_entity
+      render "books_edit", status: :unprocessable_entity
     end
   end
 
