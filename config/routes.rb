@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     member do
       get :study
     end
-
     resources :cards, except: [:show]
   end
-
+  get "/books/:id/study", to: "books#study", as: :study
 end
