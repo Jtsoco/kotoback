@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
     @books = policy_scope(Book)
+    @book = Book.new()
   end
 
   def study
@@ -12,11 +13,18 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    title = 'dummy title'
+    chapters = 1
+    @book.title = title
+    @book.chapters = chapters
+    @book.user = current_user
     authorize @book
     if @book.save
-      redirect_to 'books_edit'
+      # redirect_to makes an http request to an url
+      redirect_to books_path # to change to the edit path once it is up
     else
-      render 'books_edit', status: :unprocessable_entity
+      # render a file through its path
+      render 'books/index', status: :unprocessable_entity # to change to the edit once it is up
     end
   end
 
