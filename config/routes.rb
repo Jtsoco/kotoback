@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :users do
-    resources :books do
-      get "/books/id/study", to: "pages#study", as: :study
-      resources :cards
+  resources :books, except: [:edit] do
+    member do
+      get :study
     end
+    resources :cards, except: [:show]
   end
 end
