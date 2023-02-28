@@ -1,4 +1,4 @@
-<%= simple_form_for tour do |f| %>
-  <%= f.input :manuscripts, as: :file, input_html: { multiple: true, class:}, label: "Upload a book" %>
+<%= simple_form_for(book) do |f| %>
+  <%= f.input :manuscripts, as: :file, label: "Upload a book" %>
   <%= f.button :submit, class: 'btn btn-danger'%>
 <% end %>
