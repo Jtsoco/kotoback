@@ -2,6 +2,9 @@ class BooksController < ApplicationController
   def index
     @books = policy_scope(Book)
   end
+  
+  def study
+  end
 
   def new
     @book = Book.new(book_params)
