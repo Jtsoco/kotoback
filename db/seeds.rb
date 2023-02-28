@@ -28,6 +28,7 @@ def make_books(index)
   book = Book.new
   book.title = Faker::Book.title
   book.genre = Faker::Book.genre
+  book.author = Faker::Book.author
   book.user = User.all[index]
   book.chapters = rand(3..6)
   puts book
