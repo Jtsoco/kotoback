@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :users do
     resources :books do
+      get "/books/id/study", to: "pages#study", as: :study
       resources :cards
     end
   end
-  get "/books/id/study", to: "pages#study", as: :study
 end
