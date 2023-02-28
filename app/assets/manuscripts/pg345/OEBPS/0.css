@@ -1,0 +1,154 @@
+body {
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: justify
+    }
+div.chapter {
+    page-break-before: always;
+    margin-top: 4em
+    }
+p {
+    text-indent: 1em;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em
+    }
+.c {
+    text-align: center;
+    text-indent: 0%
+    }
+.cb {
+    text-align: center;
+    text-indent: 0%;
+    font-weight: bold
+    }
+.cbs {
+    text-align: center;
+    text-indent: 0%;
+    font-weight: bold;
+    font-family: sans-serif, serif;
+    font-size: 70%
+    }
+.errata {
+    color: red;
+    text-decoration: underline
+    }
+.letra {
+    margin: 2% auto 1% auto;
+    text-align: center;
+    text-indent: 0%
+    }
+.nind {
+    text-indent: 0%
+    }
+.r {
+    text-align: right;
+    margin-right: 5%
+    }
+small {
+    font-size: 80%;
+    font-weight: normal
+    }
+h1 {
+    margin-top: 5%;
+    text-align: center;
+    clear: both
+    }
+h2 {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    text-align: center;
+    clear: both;
+    font-size: 120%
+    }
+hr {
+    width: 90%;
+    margin: 2em auto 2em auto;
+    clear: both;
+    color: black
+    }
+hr.dbl {
+    width: 90%;
+    margin: 0.5% auto 0.5% auto;
+    border: 4px double gray
+    }
+hr.full {
+    width: 50%;
+    margin: 5% auto 5% auto;
+    border: 4px double gray
+    }
+table {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    text-align: left
+    }
+.un {
+    text-decoration: underline;
+    text-indent: 0%;
+    margin: 2% auto 2% 15%
+    }
+.smcap {
+    font-variant: small-caps;
+    font-size: 100%
+    }
+img {
+    border: none
+    }
+.blockquot {
+    margin-top: 2%;
+    margin-bottom: 2%
+    }
+.blockquot2 {
+    margin: 2% 20% 2% 20%
+    }
+.boxxx {
+    border: none;
+    padding: 1%;
+    margin: 1% auto 3% auto;
+    max-width: 50%
+    }
+sub {
+    font-size: 70%;
+    vertical-align: bottom
+    }
+.poem {
+    margin-left: 20%;
+    text-indent: 0%;
+    font-size: 0.9em
+    }
+.poem .stanza {
+    margin-top: 1em;
+    margin-bottom: 1em
+    }
+.poem span.i0 {
+    display: block;
+    margin-left: 0;
+    padding-left: 3em;
+    text-indent: -3em
+    }
+.poem span.i4 {
+    display: block;
+    margin-left: 2em;
+    padding-left: 3em;
+    text-indent: -3em
+    }
+div.fig {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em
+    }
+a:link {
+    color: blue;
+    text-decoration: none
+    }
+a:visited {
+    color: blue;
+    text-decoration: none
+    }
+a:hover {
+    color: red
+    }

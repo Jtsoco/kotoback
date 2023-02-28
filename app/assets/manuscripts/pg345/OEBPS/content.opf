@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<package xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="id">
+  <metadata>
+    <dc:rights>Public domain in the USA.</dc:rights>
+    <dc:identifier opf:scheme="URI" id="id">http://www.gutenberg.org/345</dc:identifier>
+    <dc:creator opf:file-as="Stoker, Bram">Bram Stoker</dc:creator>
+    <dc:title>Dracula</dc:title>
+    <dc:language xsi:type="dcterms:RFC4646">en</dc:language>
+    <dc:subject>Horror tales</dc:subject>
+    <dc:subject>Epistolary fiction</dc:subject>
+    <dc:subject>Gothic fiction</dc:subject>
+    <dc:subject>Vampires -- Fiction</dc:subject>
+    <dc:subject>Dracula, Count (Fictitious character) -- Fiction</dc:subject>
+    <dc:subject>Transylvania (Romania) -- Fiction</dc:subject>
+    <dc:subject>Whitby (England) -- Fiction</dc:subject>
+    <dc:date opf:event="publication">1995-10-01</dc:date>
+    <dc:date opf:event="conversion">2023-02-01T10:08:22.376012+00:00</dc:date>
+    <dc:source>https://www.gutenberg.org/files/345/345-h/345-h.htm</dc:source>
+    <meta name="cover" content="id-1543627585945378114"/>
+  </metadata>
+  <manifest>
+    <!--Image: 659 x 1000 size=41729 q=20-->
+    <item href="2593710098817379789_cover.jpg" id="id-1543627585945378114" media-type="image/jpeg"/>
+    <item href="pgepub.css" id="item1" media-type="text/css"/>
+    <item href="0.css" id="item2" media-type="text/css"/>
+    <!--Chunk: size=7568 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-0.htm.html" id="pg-header" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=31819 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-1.htm.html" id="item3" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=29447 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-2.htm.html" id="item4" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=30728 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-3.htm.html" id="item5" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=31314 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-4.htm.html" id="item6" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=19543 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-5.htm.html" id="item7" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=30576 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-6.htm.html" id="item8" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=31228 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-7.htm.html" id="item9" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=34202 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-8.htm.html" id="item10" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=32160 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-9.htm.html" id="item11" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=32448 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-10.htm.html" id="item12" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=28658 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-11.htm.html" id="item13" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=39924 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-12.htm.html" id="item14" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=35923 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-13.htm.html" id="item15" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=34724 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-14.htm.html" id="item16" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=31550 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-15.htm.html" id="item17" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=24832 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-16.htm.html" id="item18" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=30661 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-17.htm.html" id="item19" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=37310 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-18.htm.html" id="item20" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=30334 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-19.htm.html" id="item21" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=33140 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-20.htm.html" id="item22" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=33387 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-21.htm.html" id="item23" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=29150 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-22.htm.html" id="item24" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=30781 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-23.htm.html" id="item25" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=33475 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-24.htm.html" id="item26" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=34275 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-25.htm.html" id="item27" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=38883 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-26.htm.html" id="item28" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=40052 Split on div.chapter-->
+    <item href="8157407147121509165_345-h-27.htm.html" id="item29" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=5473 Split on div.section-->
+    <item href="8157407147121509165_345-h-28.htm.html" id="item30" media-type="application/xhtml+xml"/>
+    <!--Chunk: size=21749-->
+    <item href="8157407147121509165_345-h-29.htm.html" id="pg-footer" media-type="application/xhtml+xml"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="wrap0000.html" id="coverpage-wrapper" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="coverpage-wrapper" linear="yes"/>
+    <itemref idref="pg-header" linear="yes"/>
+    <itemref idref="item3" linear="yes"/>
+    <itemref idref="item4" linear="yes"/>
+    <itemref idref="item5" linear="yes"/>
+    <itemref idref="item6" linear="yes"/>
+    <itemref idref="item7" linear="yes"/>
+    <itemref idref="item8" linear="yes"/>
+    <itemref idref="item9" linear="yes"/>
+    <itemref idref="item10" linear="yes"/>
+    <itemref idref="item11" linear="yes"/>
+    <itemref idref="item12" linear="yes"/>
+    <itemref idref="item13" linear="yes"/>
+    <itemref idref="item14" linear="yes"/>
+    <itemref idref="item15" linear="yes"/>
+    <itemref idref="item16" linear="yes"/>
+    <itemref idref="item17" linear="yes"/>
+    <itemref idref="item18" linear="yes"/>
+    <itemref idref="item19" linear="yes"/>
+    <itemref idref="item20" linear="yes"/>
+    <itemref idref="item21" linear="yes"/>
+    <itemref idref="item22" linear="yes"/>
+    <itemref idref="item23" linear="yes"/>
+    <itemref idref="item24" linear="yes"/>
+    <itemref idref="item25" linear="yes"/>
+    <itemref idref="item26" linear="yes"/>
+    <itemref idref="item27" linear="yes"/>
+    <itemref idref="item28" linear="yes"/>
+    <itemref idref="item29" linear="yes"/>
+    <itemref idref="item30" linear="yes"/>
+    <itemref idref="pg-footer" linear="yes"/>
+  </spine>
+  <guide>
+    <reference type="toc" title="Contents" href="8157407147121509165_345-h-0.htm.html#pgepubid00001"/>
+    <reference type="cover" title="Cover" href="wrap0000.html"/>
+  </guide>
+</package>
