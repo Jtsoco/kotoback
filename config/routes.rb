@@ -5,10 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :users do
-    resources :books do
-      resources :cards
-    end
+  resources :books, except: [:edit] do
+    resources :cards, except: [:show]
   end
-  get "/books/id/study", to: "pages#study", as: :study
+  get "/books/:id/study", to: "books#study", as: :study
 end
