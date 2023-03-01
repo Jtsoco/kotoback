@@ -6,7 +6,9 @@ class BooksController < ApplicationController
 
   def study
     @book = Book.find(params[:id])
+    @cards = Card.all
     authorize @book
+    raise
   end
 
   def new
