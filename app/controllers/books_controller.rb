@@ -15,7 +15,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    title = 'dummy title'
+    title = "dummy title"
     chapters = 1
     @book.title = title
     @book.chapters = chapters
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
       redirect_to books_path # to change to the edit path once it is up
     else
       # render a file through its path
-      render 'books/index', status: :unprocessable_entity # to change to the edit once it is up
+      render "books/index", status: :unprocessable_entity # to change to the edit once it is up
     end
   end
 
