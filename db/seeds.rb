@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.destroy_all
+Book.destroy_all
+Card.destroy_all
 
 def fake_user_admin(first_name, last_name)
   user = User.new
@@ -16,9 +19,7 @@ def fake_user_admin(first_name, last_name)
   user.save
 end
 
-User.destroy_all
 puts 'Creating users'
-
 fake_user_admin('luca', 'vigotti')
 fake_user_admin('kenta', 'asakura')
 fake_user_admin('emmanuel', 'de la forest')
@@ -35,24 +36,24 @@ def make_books(index)
   book.save
 end
 
-Book.destroy_all
 puts 'Creating books'
-
 4.times do |i|
   make_books(i)
 end
 
+words = { necessary: '必要', miracle: '奇跡', season: '季節', speed: '速度', genuine: '純正' }
+
 def make_cards
   card = Card.new
   card.book = Book.all.sample
+  card.book.chapters
   card.origin_word = '物語'
   card.translation_word = 'story, legend'
   puts card
+  card.save
 end
 
-Card.destroy_all
 puts 'Creating cards'
-
 10.times do
   make_cards
-end
+end 

@@ -154,6 +154,8 @@ GEM
     mini_mime (1.1.2)
     minitest (5.17.0)
     msgpack (1.6.0)
+    natto (1.2.0)
+      ffi (>= 1.9.0)
     net-imap (0.3.4)
       date
       net-protocol
@@ -289,6 +291,7 @@ DEPENDENCIES
   htmlbeautifier
   jbuilder
   jsbundling-rails
+  natto
   pg (~> 1.1)
   puma (~> 5.0)
   pundit

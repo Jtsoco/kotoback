@@ -47,6 +47,12 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# natto gem
+# gem 'natto'
+
+# mecab gem
+# gem 'mecab'
+
 # Faker gem
 gem 'faker'
 
