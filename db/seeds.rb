@@ -36,7 +36,7 @@ def make_books(index)
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
   book.user = User.all[index]
-  book.chapters = rand(3..6)
+  book.chapters = 2
   puts book
   book.save
 end
@@ -46,19 +46,30 @@ puts 'Creating books'
   make_books(i)
 end
 
-words = { necessary: '必要', miracle: '奇跡', season: '季節', speed: '速度', genuine: '純正' }
+words = [{origin: '必要', translation: 'necessary'},
+  {origin: '奇跡', translation: 'miracle'},
+  {origin: '速度', translation: 'speed'},
+  {origin: '純正', translation: 'genuine'},
+  {origin: '達人', translation: 'master'},
+  {origin: '合法', translation: 'legal'},
+  {origin: '危険', translation: 'dangerous'},
+  {origin: '能力', translation: 'ability'},
+  {origin: '重力', translation: 'gravity'},
+  {origin: '落下', translation: 'fall'}
+]
 
-def make_cards
+def make_cards(japanese, english, book)
   card = Card.new
-  card.book = Book.all.sample
-  card.book.chapters
-  card.origin_word = '物語'
-  card.translation_word = 'story, legend'
+  card.book = book
+  card.origin_word = japanese
+  card.translation_word = english
   puts card
   card.save
 end
 
 puts 'Creating cards'
-10.times do
-  make_cards
-end 
+words.each do |word|
+  Book.all.each do |book|
+    make_cards(word[:origin], word[:translation], book)
+  end
+end
