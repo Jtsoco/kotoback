@@ -1,23 +1,16 @@
 <div class="container">
   <h1>My Books 📚</h1>
   <div class="cards">
-    <div class="card">
-      <div>
-        <img src="https://imgv3.fotor.com/images/gallery/Childrens-Book-Covers.jpg" alt="">
-        <div class="card-info">
-          <h3>Book Title</h3>
-          <p>Number of chapters</p>
+    <% @books.each do |book| %>
+      <div class="card">
+        <div>
+          <img src="https://imgv3.fotor.com/images/gallery/Childrens-Book-Covers.jpg" alt="">
+          <div class="card-info">
+            <h4><%= book.title %></h4>
+            <p><%= book.chapters %> Chapters</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div>
-        <img src="https://i.pinimg.com/originals/a1/f8/87/a1f88733921c820db477d054fe96afbb.jpg" alt="">
-      </div>
-      <div class="card-info">
-      </div>
-    </div>
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-      Dinner
-    </div>
+    <% end %>
   </div>
+</div>

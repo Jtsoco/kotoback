@@ -9,9 +9,15 @@
     </div>
   </div>
   <div class="scene scene--card" data-controller="book">
-    <div class="card" data-book-target="card" data-action="click->book#flipCards">
-      <div class="card__face card__face--front"><%= @book.cards %></div>
-      <div class="card__face card__face--back">back</div>
-    </div>
+    <% @cards.each do |card| %>
+      <div class="card" data-book-target="card" data-action="click->book#flipCards">
+        <div class="card__face card__face--front"><%= card.origin_word %>
+          <p>Touch to flip</p>
+        </div>
+        <div class="card__face card__face--back"><%= card.translation_word %>
+          <p>Touch to flip</p>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
