@@ -254,9 +254,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    verbs (3.1.0)
-      activesupport (>= 2.3.4)
-      i18n
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -306,7 +303,6 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
-  verbs (~> 3.1)
   web-console
   webdrivers
 
