@@ -52,6 +52,8 @@ gem 'nokogiri', '~> 1.14', '>= 1.14.2'
 # Faker gem
 gem 'faker'
 
+
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
