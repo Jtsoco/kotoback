@@ -59,6 +59,8 @@ gem 'nokogiri', '~> 1.14', '>= 1.14.2'
 # Faker gem
 gem "faker"
 
+# gem for verb conjugation
+gem 'verbs', '~> 3.1'
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

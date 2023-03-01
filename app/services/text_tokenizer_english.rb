@@ -3,6 +3,8 @@ require 'active_support/core_ext/string'
 class TextTokenizerEnglish
   def initialize(array)
     @array = array
+    @contractions = File.foreach('app/assets/filters/english_filters/contractions.txt').map { |line| line.split(' ') }.flatten
+
   end
 
   def tokenize_all
@@ -14,15 +16,8 @@ class TextTokenizerEnglish
 
   def tokenize(text)
     # splits words along spaces, _, -, and /
-    split_text = text.split(/[\s\-\_\/]/)
-    # gets rid of non letters
-    split_text_clean = split_text.map {|word| word.gsub(/(\W|\d)/, "")}
-    # makes all words singular
-    split_singular = split_text_clean.map {|word| word.singularize}
-    # in case of nil, compact!
-    split_singular.compact!
-    # downcase the words
-    words = split_singular.map {|word| word.downcase}
-
+    text.squish!
+    split_text = text.split(/(\\n)|[\W_\d]/)
+    split_text.reject{|w| w.empty?}
   end
 end
