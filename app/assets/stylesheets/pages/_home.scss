@@ -1,1 +1,27 @@
 // Specific CSS for your home-page
+.home-upload-form {
+  padding-top: 40px;
+}
+
+.container h2 {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.home-content {
+  padding-top: 32px;
+  display: flex;
+}
+
+.instruction-image-side {
+  width: 50%;
+}
+
+.instruction-image {
+  height: 500px;
+  width: 500px;
+}
+
+.instruction-placeholder {
+  width: 50%;
+}
