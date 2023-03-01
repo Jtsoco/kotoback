@@ -1,9 +1,18 @@
 <div class='container'>
-  <h1>Home</h1>
   <div class='home-upload-form'>
     <%= render "shared/book_upload", book: @book %>
     <% if @book.manuscript.attached? %>
       <%= cl_image_path @book.manuscript.key %>
     <% end %>
+  </div>
+
+  <h2>Turn your books into flashcards</h2>
+  <div class='home-content'>
+    <div class='instruction-image-side'>
+      <%= image_tag 'https://getproofed.com.au/wp-content/uploads/2021/03/3-Graphic-5-Top-Tips-for-Writing-Clear-Instructions.png', class: 'instruction-image' %>
+    </div>
+    <div class='instruction-placeholder'>
+      <h3>1. Click on the book button and select a book</h3>
+    </div>
   </div>
 </div>
