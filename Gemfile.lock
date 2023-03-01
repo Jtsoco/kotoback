@@ -292,6 +292,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   natto
+  nokogiri (~> 1.14, >= 1.14.2)
   pg (~> 1.1)
   puma (~> 5.0)
   pundit

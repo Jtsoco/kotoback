@@ -14,7 +14,7 @@ def fake_user_admin(first_name, last_name)
   user.email = "#{first_name}@yahoo.com"
   user.first_name = first_name.capitalize
   user.last_name = last_name.capitalize
-  user.password = 'secret'
+  user.password = "secret"
   puts user
   user.save
 end
@@ -24,6 +24,11 @@ fake_user_admin('luca', 'vigotti')
 fake_user_admin('kenta', 'asakura')
 fake_user_admin('emmanuel', 'de la forest')
 fake_user_admin('jackson', 'scolofsky')
+
+fake_user_admin("luca", "vigotti")
+fake_user_admin("kenta", "asakura")
+fake_user_admin("emmanuel", "de la forest")
+fake_user_admin("jackson", "scolofsky")
 
 def make_books(index)
   book = Book.new

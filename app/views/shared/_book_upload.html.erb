@@ -1,0 +1,4 @@
+<%= simple_form_for(book)  do |f| %>
+  <%= f.input :manuscript, as: :file, label: "Upload a book" %>
+  <%= f.button :submit, class: 'btn btn-danger'%>
+<% end %>
