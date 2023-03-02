@@ -31,7 +31,6 @@ gem "pundit"
 
 # gem 'rubyzip'
 
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -51,7 +50,7 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 # adding Nokogiri
-gem 'nokogiri', '~> 1.14', '>= 1.14.2'
+gem "nokogiri", "~> 1.14", ">= 1.14.2"
 
 # natto gem
 # gem 'natto'
@@ -61,9 +60,6 @@ gem 'nokogiri', '~> 1.14', '>= 1.14.2'
 
 # Faker gem
 gem "faker"
-
-
-
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -76,7 +72,7 @@ gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "cloudinary"
 gem "htmlbeautifier"
-# gem "deepl-rb", require: "deepl"
+gem "deepl-rb", require: "deepl"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
