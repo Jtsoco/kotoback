@@ -34,6 +34,7 @@ class BooksController < ApplicationController
     book_serialized = URI.open(url).read
     book = JSON.parse(book_serialized)
     @book.image_url = book["ISBN:#{book_isbn}"]['cover']['medium']
+    # refactor by using service
     # @book = FetchBookPhoto.new(@book).call
 
     authorize @book
