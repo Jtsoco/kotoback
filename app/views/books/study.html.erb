@@ -16,8 +16,8 @@
         <p class="flashcard-instruction">Touch to flip</p>
         <div class="flashcard__face flashcard__face--back"><%= card.translation_word %>
           <div id="flashcard-btn">
-            <a href="#link" class="btn btn-danger" role="button">Don't know</a>
-            <a href="#link" class="btn btn-success" role="button">Know</a>
+            <button class="btn btn-danger" data-action="click->book#destroy">Don't know</button>
+            <button class="btn btn-success" data-action="click->book#destroy">Know</button>
           </div>
         </div>
       </div>

@@ -31,6 +31,13 @@
   transform: translateX(-100%) rotateY(-180deg);
 }
 
+.flashcard.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+
 .flashcard__face {
   position: absolute;
   width: 100%;
