@@ -11,7 +11,8 @@ class EpubConverter
     File.open("ebook.epub", "wb") do |file|
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
       original_path = ApplicationController.helpers.cl_image_path @book.manuscript.key
-      url = original_path.gsub("image", "raw") + ".epub"
+      url = original_path.gsub("image", "raw")
+      url += ".epub" unless url.match?(/.\epub/)
       file.write(URI.open(url).read())
     end
 
