@@ -25,65 +25,65 @@ fake_user_admin("kenta", "asakura")
 fake_user_admin("emmanuel", "de la forest")
 fake_user_admin("jackson", "scolofsky")
 
-book_titles = ['Harry Potter and the Chamber of Secrets',
-  'Little Bear',
-   'Gone Girl',
-  'The Summer of the Swans',
-  'The Help']
+# book_titles = ['Harry Potter and the Chamber of Secrets',
+#   'Little Bear',
+#    'Gone Girl',
+#   'The Summer of the Swans',
+#   'The Help']
 
-def make_books(index)
-  book = Book.new
-  book.title = book_titles.sample
-  book.genre = Faker::Book.genre
-  book.author = Faker::Book.author
+# def make_books(index)
+#   book = Book.new
+#   book.title = book_titles.sample
+#   book.genre = Faker::Book.genre
+#   book.author = Faker::Book.author
 
-  url = "https://openlibrary.org/search.json?q=#{book.title}"
-  book_serialized = URI.open(url).read
-  book_url = JSON.parse(book_serialized)
-  book_isbn = book_url['docs'].first['isbn'][0]
+#   url = "https://openlibrary.org/search.json?q=#{book.title}"
+#   book_serialized = URI.open(url).read
+#   book_url = JSON.parse(book_serialized)
+#   book_isbn = book_url['docs'].first['isbn'][0]
 
-  url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
-  book_serialized = URI.open(url).read
-  json_book = JSON.parse(book_serialized)
+#   url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
+#   book_serialized = URI.open(url).read
+#   json_book = JSON.parse(book_serialized)
 
-  book.image_url = json_book["ISBN:#{book_isbn}"]['cover']['medium']
-  book.user = User.all[index]
-  book.chapters = 2
-  puts book
-  book.save
-end
+#   book.image_url = json_book["ISBN:#{book_isbn}"]['cover']['medium']
+#   book.user = User.all[index]
+#   book.chapters = 2
+#   puts book
+#   book.save
+# end
 
-puts "Creating books"
+# puts "Creating books"
 
-User.all.each do
-  4.times do |i|
-    make_books(i)
-  end
-end
+# User.all.each do
+#   4.times do |i|
+#     make_books(i)
+#   end
+# end
 
-words = [{ origin: "必要", translation: "necessary" },
-         { origin: "奇跡", translation: "miracle" },
-         { origin: "速度", translation: "speed" },
-         { origin: "純正", translation: "genuine" },
-         { origin: "達人", translation: "master" },
-         { origin: "合法", translation: "legal" },
-         { origin: "危険", translation: "dangerous" },
-         { origin: "能力", translation: "ability" },
-         { origin: "重力", translation: "gravity" },
-         { origin: "落下", translation: "fall" }]
+# words = [{ origin: "必要", translation: "necessary" },
+#          { origin: "奇跡", translation: "miracle" },
+#          { origin: "速度", translation: "speed" },
+#          { origin: "純正", translation: "genuine" },
+#          { origin: "達人", translation: "master" },
+#          { origin: "合法", translation: "legal" },
+#          { origin: "危険", translation: "dangerous" },
+#          { origin: "能力", translation: "ability" },
+#          { origin: "重力", translation: "gravity" },
+#          { origin: "落下", translation: "fall" }]
 
-def make_cards(japanese, english, book)
-  card = Card.new
-  card.book = book
-  card.origin_word = japanese
-  card.translation_word = english
-  puts card
-  card.save
-end
+# def make_cards(japanese, english, book)
+#   card = Card.new
+#   card.book = book
+#   card.origin_word = japanese
+#   card.translation_word = english
+#   puts card
+#   card.save
+# end
 
-puts "Creating cards"
-words.each do |word|
-  Book.all.each do |book|
-    make_cards(word[:origin], word[:translation], book)
-  end
-end
+# puts "Creating cards"
+# words.each do |word|
+#   Book.all.each do |book|
+#     make_cards(word[:origin], word[:translation], book)
+#   end
+# end

@@ -42,8 +42,8 @@ class BookToCards
     # TODO put in check for empty arrays
     @book.title = title
     @book.save
-    translated_chapter_arrays.each do |array|
-      array.each_with_index do |hash, index|
+    translated_chapter_arrays.each_with_index do |array, index|
+      array.each do |hash|
         new_card(hash, index)
       end
     end
