@@ -25,11 +25,6 @@ fake_user_admin('kenta', 'asakura')
 fake_user_admin('emmanuel', 'de la forest')
 fake_user_admin('jackson', 'scolofsky')
 
-fake_user_admin("luca", "vigotti")
-fake_user_admin("kenta", "asakura")
-fake_user_admin("emmanuel", "de la forest")
-fake_user_admin("jackson", "scolofsky")
-
 def make_books(index)
   book = Book.new
   book.title = Faker::Book.title
@@ -42,8 +37,11 @@ def make_books(index)
 end
 
 puts 'Creating books'
-4.times do |i|
-  make_books(i)
+
+User.all.each do
+  4.times do |i|
+    make_books(i)
+  end
 end
 
 words = [{origin: '必要', translation: 'necessary'},
