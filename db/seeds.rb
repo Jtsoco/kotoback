@@ -25,9 +25,15 @@ fake_user_admin('kenta', 'asakura')
 fake_user_admin('emmanuel', 'de la forest')
 fake_user_admin('jackson', 'scolofsky')
 
+book_titles = ['Harry Potter and the Chamber of Secrets',
+  'Little Bear',
+   'Gone Girl',
+  'The Summer of the Swans',
+  'The Help']
+
 def make_books(index)
   book = Book.new
-  book.title = 'Snowwhite'
+  book.title =
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
 
