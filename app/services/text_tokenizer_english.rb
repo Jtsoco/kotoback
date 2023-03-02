@@ -8,7 +8,7 @@ class TextTokenizerEnglish
   end
 
   def tokenize_all
-    tokenized_arr = @array.map |text|
+    tokenized_arr = @array.map do |text|
       tokenize(text)
     end
     tokenized_arr
