@@ -28,8 +28,12 @@ fake_user_admin("jackson", "scolofsky")
 BOOK_TITLES = ['Harry Potter and the Chamber of Secrets',
   'Little Bear',
    'Gone Girl',
-  'The Summer of the Swans',
   'The Help']
+
+
+# littlebear = 9780140315684
+# gonegirl = 359652072X
+# the help = 9781089419099
 
 def make_books(index)
   book = Book.new
@@ -37,16 +41,19 @@ def make_books(index)
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
 
+  # not all books has a cover its throwing an error
+  # https://openlibrary.org/search.json?q=
   url = "https://openlibrary.org/search.json?q=#{book.title}"
   book_serialized = URI.open(url).read
   book_url = JSON.parse(book_serialized)
   book_isbn = book_url['docs'].first['isbn'][0]
+  # https://openlibrary.org/api/books?bibkeys=ISBN:9780606204910&format=json&jscmd=data
 
   url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
   book_serialized = URI.open(url).read
   json_book = JSON.parse(book_serialized)
+  book.image_url = json_book["ISBN:#{book_isbn}"]['cover']['small']
 
-  book.image_url = json_book["ISBN:#{book_isbn}"]['cover'['medium']]
   book.user = User.all[index]
   book.chapters = 2
   puts book
