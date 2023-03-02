@@ -27,7 +27,8 @@ class BooksController < ApplicationController
       # service = EpubConverter.new(@book)
       # service.call
       service = BookToCards.new(@book)
-      service.card_creator
+      hash = service.card_creator
+      raise
       # redirect_to makes an http request to an url
       redirect_to books_path # to change to the edit path once it is up
     else
