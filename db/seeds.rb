@@ -19,11 +19,11 @@ def fake_user_admin(first_name, last_name)
   user.save
 end
 
-puts 'Creating users'
-fake_user_admin('luca', 'vigotti')
-fake_user_admin('kenta', 'asakura')
-fake_user_admin('emmanuel', 'de la forest')
-fake_user_admin('jackson', 'scolofsky')
+puts "Creating users"
+fake_user_admin("luca", "vigotti")
+fake_user_admin("kenta", "asakura")
+fake_user_admin("emmanuel", "de la forest")
+fake_user_admin("jackson", "scolofsky")
 
 def make_books(index)
   book = Book.new
@@ -31,23 +31,24 @@ def make_books(index)
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
 
-  url = "https://openlibrary.org/search.json?q=#{book.title}"
-  book_serialized = URI.open(url).read
-  book = JSON.parse(book_serialized)
-  book_isbn = book['docs'].first['isbn'][0]
+  # url = "https://openlibrary.org/search.json?q=#{book.title}"
+  # book_serialized = URI.open(url).read
+  # book = JSON.parse(book_serialized)
+  # book_isbn = book["docs"].first["isbn"][0]
 
-  url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
-  book_serialized = URI.open(url).read
-  book = JSON.parse(book_serialized)
+  # url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
+  # book_serialized = URI.open(url).read
+  # book = JSON.parse(book_serialized)
 
-  book.image_url = book["ISBN:#{book_isbn}"]['cover']['medium']
+  # book.image_url = book["ISBN:#{book_isbn}"]["cover"]["medium"]
+  book.image_url = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/yellow-business-leadership-book-cover-design-template-dce2f5568638ad4643ccb9e725e5d6ff.jpg?ts=1637017516"
   book.user = User.all[index]
   book.chapters = 2
   puts book
   book.save
 end
 
-puts 'Creating books'
+puts "Creating books"
 
 User.all.each do
   4.times do |i|
@@ -55,17 +56,16 @@ User.all.each do
   end
 end
 
-words = [{origin: '必要', translation: 'necessary'},
-  {origin: '奇跡', translation: 'miracle'},
-  {origin: '速度', translation: 'speed'},
-  {origin: '純正', translation: 'genuine'},
-  {origin: '達人', translation: 'master'},
-  {origin: '合法', translation: 'legal'},
-  {origin: '危険', translation: 'dangerous'},
-  {origin: '能力', translation: 'ability'},
-  {origin: '重力', translation: 'gravity'},
-  {origin: '落下', translation: 'fall'}
-]
+words = [{ origin: "必要", translation: "necessary" },
+         { origin: "奇跡", translation: "miracle" },
+         { origin: "速度", translation: "speed" },
+         { origin: "純正", translation: "genuine" },
+         { origin: "達人", translation: "master" },
+         { origin: "合法", translation: "legal" },
+         { origin: "危険", translation: "dangerous" },
+         { origin: "能力", translation: "ability" },
+         { origin: "重力", translation: "gravity" },
+         { origin: "落下", translation: "fall" }]
 
 def make_cards(japanese, english, book)
   card = Card.new
@@ -76,7 +76,7 @@ def make_cards(japanese, english, book)
   card.save
 end
 
-puts 'Creating cards'
+puts "Creating cards"
 words.each do |word|
   Book.all.each do |book|
     make_cards(word[:origin], word[:translation], book)

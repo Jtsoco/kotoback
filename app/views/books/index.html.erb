@@ -1,10 +1,10 @@
-<div class="container">
+<div id="class-container">
   <h1 class="top-header">My Books 📚</h1>
   <div class="cards">
     <% @books.each do |book| %>
       <div class="card">
         <div>
-          <img src="https://imgv3.fotor.com/images/gallery/Childrens-Book-Covers.jpg" alt="">
+          <img src=<%= book.image_url %>>
           <div class="card-info">
             <h4><%= book.title %></h4>
             <p><%= book.chapters %> Chapters</p>
