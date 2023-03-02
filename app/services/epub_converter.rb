@@ -37,6 +37,9 @@ class EpubConverter
         # File.join("app/assets/manuscripts/#{title}", 'test5.html')
       end
       # p page.content_document.nokogiri.children.first
+      # @cloud.manuscript.purge
+      # Cloudinary::Uploader.destroy("#{@book.manuscript.key}.epub", :resource_type => 'raw')
+      File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete all files in the directory
     end
     return title
   end
