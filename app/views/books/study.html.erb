@@ -1,5 +1,5 @@
-<div class= "container">
-  <h2><%= @book.title %></h2>
+<div id= "flashcard-container">
+  <h2 class="top-header"><%= @book.title %></h2>
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Select Chapter
@@ -8,14 +8,17 @@
       <a class="dropdown-item" href="#">Chapter <%= @book.chapters %></a>
     </div>
   </div>
-  <div class="scene scene--card" data-controller="book">
-    <% @cards.each do |card| %>
-      <div class="card" data-book-target="card" data-action="click->book#flipCards">
-        <div class="card__face card__face--front"><%= card.origin_word %>
-          <p>Touch to flip</p>
+  <div class="scene scene--card" >
+    <% @array.each do |card| %>
+      <div class="flashcard" data-book-target="card" data-action="click->book#flipCards" data-controller="book">
+        <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
         </div>
-        <div class="card__face card__face--back"><%= card.translation_word %>
-          <p>Touch to flip</p>
+        <p class="flashcard-instruction">Touch to flip</p>
+        <div class="flashcard__face flashcard__face--back"><%= card.translation_word %>
+          <div id="flashcard-btn">
+            <button class="btn btn-danger" data-action="click->book#destroy">Don't know</button>
+            <button class="btn btn-success" data-action="click->book#destroy">Know</button>
+          </div>
         </div>
       </div>
     <% end %>
