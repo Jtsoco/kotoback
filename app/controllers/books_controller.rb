@@ -25,7 +25,7 @@ class BooksController < ApplicationController
     @book.chapters = chapters
     @book.user = current_user
 
-    url = "https://openlibrary.org/search.json?q=starwars"
+    url = "https://openlibrary.org/search.json?q=#{@book.user}"
     book_serialized = URI.open(url).read
     book = JSON.parse(book_serialized)
     book_isbn = book['docs'].first['isbn'][0]
