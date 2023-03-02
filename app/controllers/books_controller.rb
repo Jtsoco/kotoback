@@ -8,7 +8,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @cards = Card.all
     authorize @book
-    raise
   end
 
   def new
@@ -28,7 +27,6 @@ class BooksController < ApplicationController
       # service.call
       service = BookToCards.new(@book)
       hash = service.card_creator
-      raise
       # redirect_to makes an http request to an url
       redirect_to books_path # to change to the edit path once it is up
     else
