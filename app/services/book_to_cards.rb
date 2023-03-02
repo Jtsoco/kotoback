@@ -9,9 +9,9 @@ class BookToCards
   def card_creator #name pending
     # make the local directory
     epub_converter = EpubConverter.new(@book)
-    epub_converter.call
+    title = epub_converter.call
     # calling the epub converter here instead of the controller
-    title = @book.metadata.title
+    # title = @book.metadata.title
     epub_parser = EpubParser.new(title)
     chapter_texts = epub_parser.parse_chapters
     # Now we should have an array of chapter texts
