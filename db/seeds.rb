@@ -25,7 +25,7 @@ fake_user_admin("kenta", "asakura")
 fake_user_admin("emmanuel", "de la forest")
 fake_user_admin("jackson", "scolofsky")
 
-book_titles = ['Harry Potter and the Chamber of Secrets',
+BOOK_TITLES = ['Harry Potter and the Chamber of Secrets',
   'Little Bear',
    'Gone Girl',
   'The Summer of the Swans',
@@ -33,7 +33,7 @@ book_titles = ['Harry Potter and the Chamber of Secrets',
 
 def make_books(index)
   book = Book.new
-  book.title = book_titles.sample
+  book.title = BOOK_TITLES.sample
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
 
@@ -46,7 +46,7 @@ def make_books(index)
   book_serialized = URI.open(url).read
   json_book = JSON.parse(book_serialized)
 
-  book.image_url = json_book["ISBN:#{book_isbn}"]['cover']['medium']
+  book.image_url = json_book["ISBN:#{book_isbn}"]['cover'['medium']]
   book.user = User.all[index]
   book.chapters = 2
   puts book
