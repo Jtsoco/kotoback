@@ -12,7 +12,7 @@ class EpubConverter
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
       original_path = ApplicationController.helpers.cl_image_path @book.manuscript.key
       url = original_path.gsub("image", "raw")
-      url += ".epub" unless url.match?(/.\epub/)
+      url += ".epub" unless url.match?(/\.epub/)
       file.write(URI.open(url).read())
     end
 
@@ -38,6 +38,7 @@ class EpubConverter
       end
       # p page.content_document.nokogiri.children.first
     end
+    return title
   end
 end
 
