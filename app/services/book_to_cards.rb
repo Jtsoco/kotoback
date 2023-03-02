@@ -19,15 +19,42 @@ class BookToCards
     tokenized_arrays = text_tokenizer_english.tokenize_all
     filtered_arrays = tokenized_arrays.map do |tokenized_array|
       english_filter = EnglishFilter.new(tokenized_array)
-      filter_hash_array = english_filter.filter
+      # grabbing the first 50, only those that are most common
+      # of the rare words per chapter
+      # they come out ordered by english filter
+      filter_hash_array = english_filter.filter.first(50)
     end
-    tranlsated_chapter_arrays = filtered_arrays.map do |chapter|
+    # turn the hashes back into words... could probably do in filter?
+    filtered_arrays_sans_hash = filtered_arrays.map do |chapter|
       chapter_words = chapter.map do |hash|
         hash[:word]
       end
-      translation = Translation.new(chapter_words, "EN", "JA")
+      chapter_words
+    end
+    # check the lists of all chapters against previous chapters
+    word_list_cross_check = WordListCrossCheck.new(filtered_arrays_sans_hash)
+    checked_arrays = word_list_cross_check.cross_check
+    # TODO just translate word arrays of checked chapters
+    translated_chapter_arrays = checked_arrays.map do |chapter|
+      translation = Translation.new(chapter, "EN", "JA")
       translation_hashes = translation.translate
     end
-    p tranlsated_chapter_arrays
+    # TODO put in check for empty arrays
+    @book.title = title
+    @book.save
+    translated_chapter_arrays.each do |array|
+      array.each_with_index do |hash, index|
+        new_card(hash, index)
+      end
+    end
+  end
+
+  def new_card(hash, index)
+    card = Card.new
+    card.origin_word = hash[:origin_word]
+    card.translation_word = hash[:translation_word]
+    card.chapter = index + 1
+    card.book = @book
+    card.save
   end
 end
