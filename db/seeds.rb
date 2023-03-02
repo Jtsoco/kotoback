@@ -27,9 +27,20 @@ fake_user_admin('jackson', 'scolofsky')
 
 def make_books(index)
   book = Book.new
-  book.title = Faker::Book.title
+  book.title = 'Snowwhite'
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
+
+  url = "https://openlibrary.org/search.json?q=#{book.title}"
+  book_serialized = URI.open(url).read
+  book_url = JSON.parse(book_serialized)
+  book_isbn = book_url['docs'].first['isbn'][0]
+
+  url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
+  book_serialized = URI.open(url).read
+  json_book = JSON.parse(book_serialized)
+
+  book.image_url = json_book["ISBN:#{book_isbn}"]['cover']['medium']
   book.user = User.all[index]
   book.chapters = 2
   puts book
