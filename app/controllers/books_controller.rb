@@ -9,8 +9,8 @@ class BooksController < ApplicationController
   def study
     @book = Book.find(params[:id])
     @cards = Card.all
+    @array = @cards.map { |card| card }
     authorize @book
-    raise
   end
 
   def new

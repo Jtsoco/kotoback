@@ -31,7 +31,6 @@ gem "pundit"
 
 # gem 'rubyzip'
 
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -51,7 +50,7 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 # adding Nokogiri
-gem 'nokogiri', '~> 1.14', '>= 1.14.2'
+gem "nokogiri", "~> 1.14", ">= 1.14.2"
 
 # natto gem
 # gem 'natto'
@@ -61,9 +60,6 @@ gem 'nokogiri', '~> 1.14', '>= 1.14.2'
 
 # Faker gem
 gem "faker"
-
-
-
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
