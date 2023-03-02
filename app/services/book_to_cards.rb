@@ -28,6 +28,6 @@ class BookToCards
       translation = Translation.new(chapter_words, "EN", "JA")
       translation_hashes = translation.translate
     end
-    return tranlsated_chapter_arrays
+    p tranlsated_chapter_arrays
   end
 end
