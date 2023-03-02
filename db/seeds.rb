@@ -33,6 +33,7 @@ def make_books(index)
 
   url = "https://openlibrary.org/search.json?q=#{book.title}"
   book_serialized = URI.open(url).read
+
   book_url = JSON.parse(book_serialized)
   book_isbn = book_url['docs'].first['isbn'][0]
 
@@ -41,6 +42,7 @@ def make_books(index)
   json_book = JSON.parse(book_serialized)
 
   book.image_url = json_book["ISBN:#{book_isbn}"]['cover']['medium']
+
   book.user = User.all[index]
   book.chapters = 2
   puts book

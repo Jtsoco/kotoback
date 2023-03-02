@@ -9,8 +9,8 @@ class BooksController < ApplicationController
   def study
     @book = Book.find(params[:id])
     @cards = Card.all
+    @array = @cards.map { |card| card }
     authorize @book
-    raise
   end
 
   def new
@@ -39,6 +39,11 @@ class BooksController < ApplicationController
 
     authorize @book
     if @book.save
+      # service = EpubConverter.new(@book)
+      # service.call
+      service = BookToCards.new(@book)
+      hash = service.card_creator
+      raise
       # redirect_to makes an http request to an url
       redirect_to books_path # to change to the edit path once it is up
     else

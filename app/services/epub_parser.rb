@@ -1,4 +1,4 @@
-class EpubParser
+class EpubParser #change name to HTMLParser
   def initialize(folder)
     @folder = folder
   end

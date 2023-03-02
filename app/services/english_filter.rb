@@ -1,6 +1,8 @@
 class EnglishFilter
 
-  def initialize(singular_words, filters={})
+  def initialize(singular_words)
+    # add filters={} as an intialize option later
+    # for filter select
     # an array of singular words from the text
     @singular_words = singular_words
     # This is where we put the filter options
@@ -17,10 +19,7 @@ class EnglishFilter
     @english_10000 = set_singular(File.foreach('app/assets/filters/english_filters/english_10000.txt').map { |line| line.split(' ') }.flatten)
   end
 
-  def filter!
-    # this will run through seeing which options are selected
-    # and implementing based on that
-  end
+
 
   def set_singular(split_text)
     # split_text = text.split(/(\\n)|[\s\-\_\/]/)
