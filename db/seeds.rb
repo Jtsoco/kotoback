@@ -33,7 +33,7 @@ book_titles = ['Harry Potter and the Chamber of Secrets',
 
 def make_books(index)
   book = Book.new
-  book.title =
+  book.title = book_titles.sample
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
 
