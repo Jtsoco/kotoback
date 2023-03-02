@@ -3,7 +3,7 @@ require 'active_support/core_ext/string'
 class TextTokenizerEnglish
   def initialize(array)
     @array = array
-    @contractions = File.foreach('app/assets/filters/english_filters/contractions.txt').map { |line| line.split(' ') }.flatten
+    # @contractions = File.foreach('app/assets/filters/english_filters/contractions.txt').map { |line| line.split(' ') }.flatten
 
   end
 
@@ -15,8 +15,10 @@ class TextTokenizerEnglish
   end
 
   def tokenize(text)
-    # splits words along spaces, _, -, and /
+    # squish gets rid of html content like \n in the text
     text.squish!
+    # note to self, change regex beneath later. Get rid of \n, squish already does it
+    # TODO
     split_text = text.split(/(\\n)|[\W_\d]/)
     split_text.reject{|w| w.empty?}
   end
