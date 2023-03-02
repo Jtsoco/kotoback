@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class BooksController < ApplicationController
   def index
     @books = policy_scope(Book)
@@ -22,6 +24,18 @@ class BooksController < ApplicationController
     @book.title = title
     @book.chapters = chapters
     @book.user = current_user
+
+    url = "https://openlibrary.org/search.json?q=starwars"
+    book_serialized = URI.open(url).read
+    book = JSON.parse(book_serialized)
+    book_isbn = book['docs'].first['isbn'][0]
+
+    url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
+    book_serialized = URI.open(url).read
+    book = JSON.parse(book_serialized)
+    @book.image_url = book["ISBN:#{book_isbn}"]['cover']['medium']
+    # @book = FetchBookPhoto.new(@book).call
+
     authorize @book
     if @book.save
       # redirect_to makes an http request to an url
