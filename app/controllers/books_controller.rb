@@ -34,6 +34,7 @@ class BooksController < ApplicationController
     book_serialized = URI.open(url).read
     book = JSON.parse(book_serialized)
     @book.image_url = book["ISBN:#{book_isbn}"]['cover']['medium']
+
     # refactor by using service
     # @book = FetchBookPhoto.new(@book).call
 
@@ -43,7 +44,6 @@ class BooksController < ApplicationController
       # service.call
       service = BookToCards.new(@book)
       hash = service.card_creator
-      raise
       # redirect_to makes an http request to an url
       redirect_to books_path # to change to the edit path once it is up
     else
