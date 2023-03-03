@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @cards = @book.cards
     @array = @cards.map { |card| card }
-    @organized_chapters = @book.cards.pluck(:chapter)
+    @organized_chapters = @book.cards.pluck(:chapter).uniq
     authorize @book
   end
 
