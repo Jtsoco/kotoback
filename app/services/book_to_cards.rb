@@ -36,8 +36,13 @@ class BookToCards
     checked_arrays = word_list_cross_check.cross_check
     # TODO just translate word arrays of checked chapters
     translated_chapter_arrays = checked_arrays.map do |chapter|
+      if chapter.empty?
+        # TODO FIX THIS
+      else
+
       translation = Translation.new(chapter, "EN", "JA")
       translation_hashes = translation.translate
+      end
     end
     # TODO put in check for empty arrays
     @book.title = title
