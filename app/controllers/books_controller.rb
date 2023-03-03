@@ -1,4 +1,4 @@
-require 'open-uri'
+require "open-uri"
 
 class BooksController < ApplicationController
   def index
@@ -8,8 +8,9 @@ class BooksController < ApplicationController
 
   def study
     @book = Book.find(params[:id])
-    @cards = Card.all
+    @cards = @book.cards
     @array = @cards.map { |card| card }
+    @organized_chapters = @book.cards.pluck(:chapter)
     authorize @book
   end
 
@@ -40,6 +41,7 @@ class BooksController < ApplicationController
     else
       @book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
     end
+
     # refactor by using service
     # @book = FetchBookPhoto.new(@book).call
 
