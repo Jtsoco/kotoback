@@ -1,20 +1,17 @@
-<div class='container'>
+<div class='home-container'>
   <div class='home-upload-form'>
     <%= render "shared/book_upload", book: @book %>
     <% if @book.manuscript.attached? %>
       <%= cl_image_path @book.manuscript.key %>
     <% end %>
   </div>
-
   <div class='language-dropdowns'>
     <div>
       <%= render "shared/origin_language_dropdown" %>
     </div>
-
     <div>
     </div>
   </div>
-
   <h2>Turn your books into flashcards</h2>
   <div class='home-content'>
     <div class='instruction-image-side'>
