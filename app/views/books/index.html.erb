@@ -2,19 +2,17 @@
   <h1 class="top-header">My Books 📚</h1>
   <div class="cards">
     <% @books.each do |book| %>
-      <%= link_to study_path(book) do %>
-        <div class="card">
-          <div>
-            <img src=<%= book.image_url %>>
-            <div class="card-info">
-              <h4><%= book.title %></h4>
-              <p><%= book.cards.pluck(:chapter).last %> Chapters</p>
-            </div>
+      <div class="card my-relative">
+        <div>
+          <%=image_tag(book.image_url)%>
+          <div class="card-info">
+            <h4><%= book.title %></h4>
+            <p><%= book.cards.pluck(:chapter).last %> Chapters</p>
           </div>
         </div>
-      <% end %>
+        <%= link_to '', study_path(book), class: "my-overlay" %>
+      </div>
     <% end %>
   </div>
 </div>
-
-          <%#= link_to image_tag(book.image_url), study_path(book) %>
+<%#= link_to image_tag(book.image_url), study_path(book) %>
