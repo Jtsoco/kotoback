@@ -1,10 +1,11 @@
-# require 'natto'
+require 'natto'
 
-# class NattoService
-#   def wordify(text)
-#     nm = Natto::MeCab.new
-#     nm.parse(text)
-#   end
+class NattoService
+  def wordify(text)
+    nm = Natto::MeCab.new
+    nm.parse(text)
+  end
 
-# natto = NattoService.new
-# natto.wordify('')
+natto = NattoService.new
+natto.wordify('')
+end
