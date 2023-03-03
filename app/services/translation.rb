@@ -7,7 +7,7 @@ class Translation
 
   def translate
     translation = DeepL.translate(@array, @source_lang, @target_lang)
-    if translation.is_a?(Array) && @array.length != 0
+    if translation.is_a?(Array) && !@array.empty?
       hash_array = @array.map.with_index do |word, index|
         {
           origin_word: word,
