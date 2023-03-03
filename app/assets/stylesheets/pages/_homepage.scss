@@ -11,6 +11,13 @@
 
 .language-dropdowns {
   padding-top: 32px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-container h2 {
+  padding-top: 48px;
 }
 
 #instructions-title {
