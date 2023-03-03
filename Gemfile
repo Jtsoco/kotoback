@@ -29,6 +29,8 @@ gem "jbuilder"
 
 gem "pundit"
 
+gem 'deepl-rb', require: 'deepl'
+
 # gem 'rubyzip'
 
 # Use Redis adapter to run Action Cable in production
