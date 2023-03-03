@@ -32,7 +32,7 @@ class EpubConverter
         File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("h2").text}.html", "w") do |file|
         # File.open("app/assets/manuscripts/#{title}/test5.html", "w") do |file|
         # File.new("app/assets/manuscripts/#{title}/test3.html", "w") do |file|
-   
+
           file.write(page.content_document.nokogiri)
         end
         File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("h2").text}.html")
