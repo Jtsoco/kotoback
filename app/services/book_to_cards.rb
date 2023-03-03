@@ -44,6 +44,8 @@ class BookToCards
       translation_hashes = translation.translate
       end
     end
+    # remove nil arrays from quick fix
+    translated_chapter_arrays.compact!
     # TODO put in check for empty arrays
     @book.title = title
     @book.save

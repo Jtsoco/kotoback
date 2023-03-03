@@ -23,7 +23,7 @@ class Translation
       hash_array = []
       hash_array << {
         origin_word: @array.first,
-        translation_word: translation
+        translation_word: translation,
       }
     end
 
