@@ -51,9 +51,9 @@ class BookToCards
       array.each do |hash|
         new_card(hash, index)
       end
-      File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
-      Dir.rmdir("app/assets/manuscripts/#{title}")
     end
+    File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
+    Dir.rmdir("app/assets/manuscripts/#{title}")
   end
 
   def new_card(hash, index)
