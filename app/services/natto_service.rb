@@ -1,5 +1,3 @@
-require 'natto'
-
 class NattoService
   def wordify(text)
     nm = Natto::MeCab.new
