@@ -8,11 +8,13 @@ class BooksController < ApplicationController
 
   def study
     @book = Book.find(params[:id])
-    
-    @cards = @book.cards
-
+    if params[:chapter].present?
+      @cards = @book.cards.where(chapter: params[:chapter])
+    else
+      @cards = @book.cards.where(chapter: 1)
+    end
     @array = @cards.map { |card| card }
-    @organized_chapters = @book.cards.pluck(:chapter)
+    @organized_chapters = @book.cards.pluck(:chapter).uniq
     authorize @book
   end
 
@@ -28,19 +30,21 @@ class BooksController < ApplicationController
     @book.chapters = chapters
     @book.user = current_user
 
-    # url = "https://openlibrary.org/search.json?q=#{@book.user}"
-    # book_serialized = URI.open(url).read
-    # book = JSON.parse(book_serialized)
+    url = "https://openlibrary.org/search.json?q=#{@book.title}"
+    book_serialized = URI.open(url).read
+    book_url = JSON.parse(book_serialized)
+    book_isbn = book_url["docs"].first["isbn"][0]
 
-    # book_isbn = book['docs'].first['isbn'][0]
+    url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
+    book_serialized = URI.open(url).read
+    json_book = JSON.parse(book_serialized)
+    book_cover = json_book["ISBN:#{book_isbn}"]
 
-
-    # url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
-    # book_serialized = URI.open(url).read
-    # book = JSON.parse(book_serialized)
-
-    # @book.image_url = book["ISBN:#{book_isbn}"]['cover']['medium']
-
+    if book_cover.include?("cover")
+      @book.image_url = json_book["ISBN:#{book_isbn}"]["cover"]["medium"]
+    else
+      @book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
+    end
 
     # refactor by using service
     # @book = FetchBookPhoto.new(@book).call

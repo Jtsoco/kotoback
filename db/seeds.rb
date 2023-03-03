@@ -28,27 +28,38 @@ fake_user_admin("jackson", "scolofsky")
 BOOK_TITLES = ["Harry Potter and the Chamber of Secrets",
                "Little Bear",
                "Gone Girl",
-               "The Summer of the Swans",
                "The Help"]
 
 def make_books(index)
   book = Book.new
-
-  book.title = "Snowwhite"
+  book.title = BOOK_TITLES.sample
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
 
-  # url = "https://openlibrary.org/search.json?q=#{book.title}"
-  # book_serialized = URI.open(url).read
+  # for testing purposes
+  # https://openlibrary.org/search.json?q=
+  # 9780606204910
+  # littlebear = 9780140315684
+  # gonegirl = 359652072X
+  # the help = 9781089419099
+  # "https://openlibrary.org/api/books?bibkeys=ISBN:9780606204910&format=json&jscmd=data"
+  # json_book["ISBN:9780606204910"]['cover']['medium']
 
-  # book_url = JSON.parse(book_serialized)
-  # book_isbn = book_url["docs"].first["isbn"][0]
+  url = "https://openlibrary.org/search.json?q=#{book.title}"
+  book_serialized = URI.open(url).read
+  book_url = JSON.parse(book_serialized)
+  book_isbn = book_url["docs"].first["isbn"][0]
 
-  # url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
-  # book_serialized = URI.open(url).read
-  # json_book = JSON.parse(book_serialized)
+  url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
+  book_serialized = URI.open(url).read
+  json_book = JSON.parse(book_serialized)
+  book_cover = json_book["ISBN:#{book_isbn}"]
 
-  # book.image_url = json_book["ISBN:#{book_isbn}"]["cover"]["medium"]
+  if book_cover.include?("cover")
+    book.image_url = json_book["ISBN:#{book_isbn}"]["cover"]["medium"]
+  else
+    book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
+  end
 
   book.user = User.all[index]
   book.chapters = 2
