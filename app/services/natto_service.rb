@@ -4,6 +4,6 @@ class NattoService
     nm.parse(text)
   end
 
-natto = NattoService.new
-natto.wordify('')
+# natto = NattoService.new
+# natto.wordify('')
 end
