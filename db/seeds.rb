@@ -30,29 +30,36 @@ BOOK_TITLES = ['Harry Potter and the Chamber of Secrets',
    'Gone Girl',
   'The Help']
 
-
-# littlebear = 9780140315684
-# gonegirl = 359652072X
-# the help = 9781089419099
-
 def make_books(index)
   book = Book.new
   book.title = BOOK_TITLES.sample
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
 
-  # not all books has a cover its throwing an error
+  # for testing purposes
   # https://openlibrary.org/search.json?q=
+  # 9780606204910
+  # littlebear = 9780140315684
+  # gonegirl = 359652072X
+  # the help = 9781089419099
+  # "https://openlibrary.org/api/books?bibkeys=ISBN:9780606204910&format=json&jscmd=data"
+  # json_book["ISBN:9780606204910"]['cover']['medium']
+
   url = "https://openlibrary.org/search.json?q=#{book.title}"
   book_serialized = URI.open(url).read
   book_url = JSON.parse(book_serialized)
   book_isbn = book_url['docs'].first['isbn'][0]
-  # https://openlibrary.org/api/books?bibkeys=ISBN:9780606204910&format=json&jscmd=data
 
   url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
   book_serialized = URI.open(url).read
   json_book = JSON.parse(book_serialized)
-  book.image_url = json_book["ISBN:#{book_isbn}"]['cover']['small']
+  book_cover = json_book["ISBN:#{book_isbn}"]
+
+  if book_cover.include?('cover')
+    book.image_url = json_book["ISBN:#{book_isbn}"]['cover']['medium']
+  else
+    book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
+  end
 
   book.user = User.all[index]
   book.chapters = 2
