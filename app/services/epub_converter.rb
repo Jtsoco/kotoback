@@ -24,16 +24,16 @@ class EpubConverter
     title = book.metadata.title
     Dir.mkdir("app/assets/manuscripts/#{title}") unless Dir.exist?("app/assets/manuscripts/#{title}")
     book.each_page_on_spine do |page|
-      h1_count = page.content_document.nokogiri.search("h1").length
+      h2_count = page.content_document.nokogiri.search("h2").length
       p_count = page.content_document.nokogiri.search("p").length
-      if h1_count.positive? && p_count.positive?
+      if h2_count.positive? && p_count.positive?
         page.content_document
-        File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("h1").text}.html", "w") do |file|
+        File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("h2").text}.html", "w") do |file|
         # File.open("app/assets/manuscripts/#{title}/test5.html", "w") do |file|
         # File.new("app/assets/manuscripts/#{title}/test3.html", "w") do |file|
           file.write(page.content_document.nokogiri)
         end
-        File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("h1").text}.html")
+        File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("h2").text}.html")
         # File.join("app/assets/manuscripts/#{title}", 'test5.html')
       end
       # p page.content_document.nokogiri.children.first
