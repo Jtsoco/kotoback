@@ -5,14 +5,14 @@
       <%= cl_image_path @book.manuscript.key %>
     <% end %>
   </div>
-  <div class='language-dropdowns'>
-    <div>
-      <%= render "shared/origin_language_dropdown" %>
+  <%# <div class='language-dropdowns'> %>
+  <%# <div> %>
+  <%#= render "shared/origin_language_dropdown" %>
+  <%# </div> %>
+  <%#= render "shared/target_language_dropdown" %>
+  <%# <div>
     </div>
-      <%= render "shared/target_language_dropdown" %>
-    <div>
-    </div>
-  </div>
+  </div> %>
   <h1 id="instructions-title">Turn your books into flashcards</h1>
   <div class='home-content'>
     <div class='instruction-image-side'>
@@ -22,7 +22,6 @@
       </div>
     </div>
     <div class='instruction-placeholder'>
-
       <h4>1. Click on "Choose file" and select a book</h4>
     </div>
   </div>
