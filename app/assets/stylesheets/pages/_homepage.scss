@@ -33,6 +33,7 @@
 
 .instruction-image-side {
   width: 50%;
+  position: relative;
 }
 
 .instruction-image {
@@ -46,9 +47,11 @@
   margin-top: 16px;
 }
 
+
+
 .gorilla-logo {
   width: 200px;
   position: absolute;
-  top: 50%;
-  left: 440px;
+  top: 10%;
+  left: 200px;
 }
