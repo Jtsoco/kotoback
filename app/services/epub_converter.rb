@@ -1,12 +1,13 @@
 # require 'rubygems'
 # require 'zip'
-require 'epub/parser'
-require 'cloudinary'
+require "epub/parser"
+require "cloudinary"
 
 class EpubConverter
   def initialize(book)
     @book = book
   end
+
   def call
     File.open("ebook.epub", "wb") do |file|
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
@@ -16,7 +17,7 @@ class EpubConverter
       file.write(URI.open(url).read())
     end
 
-    book = EPUB::Parser.parse('ebook.epub')
+    book = EPUB::Parser.parse("ebook.epub")
     book.metadata.titles # => Array of EPUB::Publication::Package::Metadata::Title. Main title, subtitle, etc...
     book.metadata.title # => Title string including all titles
     book.metadata.creators # => Creators(authors)
@@ -29,8 +30,8 @@ class EpubConverter
       if h1_count.positive? && p_count.positive?
         page.content_document
         File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("h1").text}.html", "w") do |file|
-        # File.open("app/assets/manuscripts/#{title}/test5.html", "w") do |file|
-        # File.new("app/assets/manuscripts/#{title}/test3.html", "w") do |file|
+          # File.open("app/assets/manuscripts/#{title}/test5.html", "w") do |file|
+          # File.new("app/assets/manuscripts/#{title}/test3.html", "w") do |file|
           file.write(page.content_document.nokogiri)
         end
         File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("h1").text}.html")
@@ -46,18 +47,18 @@ class EpubConverter
   end
 end
 
-  # def call
-  #   reader = Epub::Reader.open("https://res.cloudinary.com/dickg3cpz/raw/upload/v1677638616/development/a7q18g5za80qc265phton8pl5ut6.epub")
-  #   puts reader.epub_version
-  #   puts reader.title
-  #   puts reader.author
-  #   puts reader.publication_date
-  #   puts reader.language
-  #   reader.pages.each do |page|
-  #     puts page.title
-  #     puts page.content
-  #   end
-  # end
+# def call
+#   reader = Epub::Reader.open("https://res.cloudinary.com/dickg3cpz/raw/upload/v1677638616/development/a7q18g5za80qc265phton8pl5ut6.epub")
+#   puts reader.epub_version
+#   puts reader.title
+#   puts reader.author
+#   puts reader.publication_date
+#   puts reader.language
+#   reader.pages.each do |page|
+#     puts page.title
+#     puts page.content
+#   end
+# end
 
 # folder = "Users/me/Desktop/stuff_to_zip"
 # input_filenames =

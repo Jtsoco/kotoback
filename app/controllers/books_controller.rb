@@ -1,4 +1,4 @@
-require 'open-uri'
+require "open-uri"
 
 class BooksController < ApplicationController
   def index
@@ -8,8 +8,9 @@ class BooksController < ApplicationController
 
   def study
     @book = Book.find(params[:id])
-    @cards = Card.all
+    @cards = @book.cards.where(chapter: 1)
     @array = @cards.map { |card| card }
+    @organized_chapters = @book.cards.pluck(:chapter)
     authorize @book
   end
 
@@ -25,15 +26,15 @@ class BooksController < ApplicationController
     @book.chapters = chapters
     @book.user = current_user
 
-    url = "https://openlibrary.org/search.json?q=#{@book.user}"
-    book_serialized = URI.open(url).read
-    book = JSON.parse(book_serialized)
-    book_isbn = book['docs'].first['isbn'][0]
+    # url = "https://openlibrary.org/search.json?q=#{@book.user}"
+    # book_serialized = URI.open(url).read
+    # book = JSON.parse(book_serialized)
+    # book_isbn = book["docs"].first["isbn"][0]
 
-    url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
-    book_serialized = URI.open(url).read
-    book = JSON.parse(book_serialized)
-    @book.image_url = book["ISBN:#{book_isbn}"]['cover']['medium']
+    # url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{book_isbn}&format=json&jscmd=data"
+    # book_serialized = URI.open(url).read
+    # book = JSON.parse(book_serialized)
+    # @book.image_url = book["ISBN:#{book_isbn}"]["cover"]["medium"]
 
     # refactor by using service
     # @book = FetchBookPhoto.new(@book).call
