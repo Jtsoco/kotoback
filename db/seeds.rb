@@ -9,6 +9,10 @@ User.destroy_all
 Book.destroy_all
 Card.destroy_all
 
+BOOK_TITLES = ["Harry Potter and the Chamber of Secrets",
+               "Little Bear",
+               "Gone Girl",
+               "The Help"]
 def fake_user_admin(first_name, last_name)
   user = User.new
   user.email = "#{first_name}@yahoo.com"
@@ -18,17 +22,6 @@ def fake_user_admin(first_name, last_name)
   puts user
   user.save
 end
-
-puts "Creating users"
-fake_user_admin("luca", "vigotti")
-fake_user_admin("kenta", "asakura")
-fake_user_admin("emmanuel", "de la forest")
-fake_user_admin("jackson", "scolofsky")
-
-BOOK_TITLES = ["Harry Potter and the Chamber of Secrets",
-               "Little Bear",
-               "Gone Girl",
-               "The Help"]
 
 def make_books(index)
   book = Book.new
@@ -67,7 +60,16 @@ def make_books(index)
   book.save
 end
 
-# puts "Creating books"
+puts "Creating users"
+fake_user_admin("luca", "vigotti")
+make_books(0)
+fake_user_admin("kenta", "asakura")
+fake_user_admin("emmanuel", "de la forest")
+fake_user_admin("jackson", "scolofsky")
+
+
+
+puts "Creating books"
 
 # User.all.each do
 #   4.times do |i|
@@ -75,29 +77,30 @@ end
 #   end
 # end
 
-# words = [{ origin: "必要", translation: "necessary" },
-#          { origin: "奇跡", translation: "miracle" },
-#          { origin: "速度", translation: "speed" },
-#          { origin: "純正", translation: "genuine" },
-#          { origin: "達人", translation: "master" },
-#          { origin: "合法", translation: "legal" },
-#          { origin: "危険", translation: "dangerous" },
-#          { origin: "能力", translation: "ability" },
-#          { origin: "重力", translation: "gravity" },
-#          { origin: "落下", translation: "fall" }]
+words = [{ origin: "必要", translation: "necessary" },
+         { origin: "奇跡", translation: "miracle" },
+         { origin: "速度", translation: "speed" },
+         { origin: "純正", translation: "genuine" },
+         { origin: "達人", translation: "master" },
+         { origin: "合法", translation: "legal" },
+         { origin: "危険", translation: "dangerous" },
+         { origin: "能力", translation: "ability" },
+         { origin: "重力", translation: "gravity" },
+         { origin: "落下", translation: "fall" }]
 
-# def make_cards(japanese, english, book)
-#   card = Card.new
-#   card.book = book
-#   card.origin_word = japanese
-#   card.translation_word = english
-#   puts card
-#   card.save
-# end
+def make_cards(japanese, english, book)
+  card = Card.new
+  card.book = book
+  card.origin_word = japanese
+  card.translation_word = english
+  card.chapter = 1
+  puts card
+  card.save
+end
 
-# puts "Creating cards"
-# words.each do |word|
-#   Book.all.each do |book|
-#     make_cards(word[:origin], word[:translation], book)
-#   end
-# end
+puts "Creating cards"
+words.each do |word|
+  Book.all.each do |book|
+    make_cards(word[:origin], word[:translation], book)
+  end
+end
