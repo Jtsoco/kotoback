@@ -6,6 +6,18 @@ class BooksController < ApplicationController
     @book = Book.new()
   end
 
+  def show
+    @book = Book.find(params[:id])
+    if params[:chapter].present?
+      @cards = @book.cards.where(chapter: params[:chapter])
+    else
+      @cards = @book.cards.where(chapter: 1)
+    end
+    @deck = @cards.map { |card| card }
+    @organized_chapters = @book.cards.pluck(:chapter).uniq
+    authorize @book
+  end
+
   def study
     @book = Book.find(params[:id])
     if params[:chapter].present?
