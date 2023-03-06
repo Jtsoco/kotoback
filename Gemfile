@@ -58,6 +58,17 @@ gem "nokogiri", "~> 1.14", ">= 1.14.2"
 # mecab gem
 # gem 'mecab'
 
+# the suika gem for tokenization, less problems getting it running than natto and mecab
+# It runs on pure ruby, based on mecab. No need to install anything else
+# see documentation on github for how to use
+gem 'suika'
+# this is the gem that allows quick parsing of the japanese english dictionary
+# the JMdict
+# Using this we can create a dictionary for our use
+gem 'eiwa'
+
+
+
 # Faker gem
 gem "faker"
 
