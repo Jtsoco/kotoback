@@ -1,19 +1,21 @@
 class CardsController < ApplicationController
   # before_action :set_book
   def new
+    @book = Book.find(params[:book_id])
     @card = Card.new
+    authorize @card
   end
 
   def create
+    @book = Book.find(params[:book_id])
     @card = Card.new(card_params)
-    @card.user = current_user
     @cards = current_user.cards
+    @card.book = @book
     authorize @card
     if @card.save
-      redirect_to :book
+      redirect_to book_path(@book)
     else
-      @tab = "new-tab"
-      render "new_card", status: :unprocessable_entity
+      render "new", status: :unprocessable_entity
     end
   end
 
@@ -37,6 +39,6 @@ class CardsController < ApplicationController
   # end
 
   def card_params
-    params.require(:card).permit(:origin_word, :translation_word)
+    params.require(:card).permit(:origin_word, :translation_word, :chapter)
   end
 end
