@@ -73,3 +73,67 @@
   display: flex;
   justify-content: space-around;
 }
+
+#show-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 65px;
+}
+
+#deck-total {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.scene-show {
+  display: inline-block;
+  width: 100%;
+  height: 315px;
+  /*   border: 1px solid #CCC; */
+  margin: 40px 0;
+  perspective: 600px;
+  position: relative;
+
+}
+
+.flashcard-show-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 300px;
+  gap: 8px 17px;
+}
+
+.flashcard-show {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+  border: 2px solid white;
+}
+
+.flashcard-show.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.flashcard-show.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.flashcard-show-edit {
+  width: 24px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.flashcard-show-delete {
+  width: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
