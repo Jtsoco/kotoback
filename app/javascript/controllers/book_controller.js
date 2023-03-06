@@ -19,6 +19,15 @@ export default class extends Controller {
   }
 
   destroy() {
+    console.log(this.cardTarget.nextElementSibling)
+    if (this.cardTarget.nextElementSibling == null) {
+      this.deckTarget.innerHTML =
+
+      "<div class='flashcard'><div class='flashcard__face flashcard__face--front'>Finished!</div></div>"
+    }
+    this.cardTarget.nextElementSibling.classList.toggle("d-none");
+    this.cardTarget.nextElementSibling.classList.toggle("active-card");
+    // this.cardTarget.nextElementSibling.classList.toggle("is-flipped")
     this.cardTarget.remove()
     console.log("deleted")
   }
