@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import SpeechController from "./speech_controller"
 application.register("speech", SpeechController)
+
+import ProgressController from "./progress_controller"
+application.register("progress", ProgressController)

@@ -45,6 +45,7 @@ class EpubConverter
       header(page)
       h_count = page.content_document.nokogiri.search("#{@h}").length
       p_count = page.content_document.nokogiri.search("p").length
+
       if h_count.positive? && p_count.positive?
         File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("#{@h}").text}.html", "w") do |file|
           file.write(page.content_document.nokogiri)
