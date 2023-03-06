@@ -7,37 +7,40 @@ class CardPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user
+    record.book.user == user
     # record: the card passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
 
   def index?
-    record.user == user
+    record.book.user == user
     # record: the card passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
 
   def new?
-    record.user == user
+    record.book.user == user
+    # record.user == user
     # record: the card passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
 
   def create?
-    record.user == user
+    record.book.user == user
+    # record.user == user
     # record: the card passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
 
   def update?
-    record.user == user
+    record.book.user == user
+    # record.user == user
     # record: the card passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end
 
-  def delete?
-    record.user == user
+  def destroy?
+    record.book.user == user
     # record: the card passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
   end

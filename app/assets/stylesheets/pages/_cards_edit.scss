@@ -1,0 +1,46 @@
+.edit-word {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 500px;
+  border: solid;
+  padding: 16px;
+}
+
+
+.edit-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 500px;
+  border: solid;
+  padding: 16px;
+}
+
+.edit-cancel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: $blue;
+  color: white;
+  font-size: 32px;
+  height: 50px;
+  width: 200px;
+}
+
+.edit-save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: $blue;
+  border: $blue;
+  color: white;
+  font-size: 32px;
+  height: 50px;
+  width: 200px;
+}

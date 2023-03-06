@@ -4,7 +4,7 @@
     <% @books.each do |book| %>
       <div class="card my-relative">
         <div>
-          <%=image_tag(book.image_url)%>
+          <%# <%=image_tag(book.image_url)%>
           <div class="card-info">
             <h4><%= book.title %></h4>
             <p><%= book.cards.pluck(:chapter).last %> Chapters</p>
