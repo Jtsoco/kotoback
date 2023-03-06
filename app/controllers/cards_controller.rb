@@ -20,7 +20,6 @@ class CardsController < ApplicationController
     end
   end
 
-
   def edit
     @card = Card.find(params[:id])
     authorize @card
@@ -31,6 +30,13 @@ class CardsController < ApplicationController
     @card.update(card_params)
     authorize @card
     redirect_to book_path(@card.book)
+  end
+
+  def destroy
+    @card = Card.find(params[:id])
+    authorize @card
+    @card.destroy
+    redirect_to book_path, status: :see_other
   end
 
   private
