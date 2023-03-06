@@ -59,13 +59,23 @@
   transform: rotateY(180deg);
 }
 
-.flashcard-instruction {
+.flashcard-instruction-front {
   font-weight: lighter;
   font-size: large;
   position: absolute;
   justify-self: unset;
   color: white;
-  top: 80%;
+  top: 68%;
+  right: 39%;
+}
+
+.flashcard-instruction-back {
+  font-weight: lighter;
+  font-size: large;
+  position: absolute;
+  justify-self: unset;
+  color: white;
+  top: 30%;
   right: 39%;
 }
 
