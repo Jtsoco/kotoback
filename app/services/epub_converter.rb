@@ -9,7 +9,7 @@ class EpubConverter
   end
 
   def call
-    File.open("ebook.epub", "wb") do |file|
+    File.open("book.epub", "wb") do |file|
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
       original_path = ApplicationController.helpers.cl_image_path @book.manuscript.key
       url = original_path.gsub("image", "raw")
@@ -17,7 +17,7 @@ class EpubConverter
       file.write(URI.open(url).read())
     end
 
-    book = EPUB::Parser.parse("ebook.epub")
+    book = EPUB::Parser.parse("book.epub")
     book.metadata.titles # => Array of EPUB::Publication::Package::Metadata::Title. Main title, subtitle, etc...
     book.metadata.title # => Title string including all titles
     book.metadata.creators # => Creators(authors)
