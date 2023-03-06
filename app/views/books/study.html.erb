@@ -14,7 +14,8 @@
   <%# card-list will be targeted when page starts up %>
   <div class="scene scene--card" data-controller="book" data-book-target="deck" >
     <% @array.each do |card| %>
-      <div class="flashcard d-none" data-book-target="card" data-action="click->book#flipCards">
+      <%# data-card-id is assigning a dataset to the card target %>
+      <div class="flashcard d-none" data-card-id="<%= card.id%>" data-book-target="card" data-action="click->book#flipCards">
         <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
         </div>
         <p class="flashcard-instruction">Touch to flip</p>
