@@ -17,7 +17,9 @@
         <div class="flashcard-show" data-book-target="card" data-action="click->book#flipCards" data-controller="book">
           <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
             <div id="flashcard-show-icons">
-              <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828911.png", class:"flashcard-show-edit" %>
+              <%= link_to edit_card_path(card) do %>
+                <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828911.png", class:"flashcard-show-edit" %>
+              <% end %>
               <%= image_tag "https://cdn-icons-png.flaticon.com/512/484/484611.png", class: "flashcard-show-delete" %>
             </div>
           </div>
