@@ -10,15 +10,17 @@
       <% end %>
     </div>
   </div>
-  <div class="scene scene--card" >
+  <%# put the data controller above the full array, as we'll need to give the first card active class %>
+  <%# card-list will be targeted when page starts up %>
+  <div class="scene scene--card" data-controller="book" data-book-target="deck" >
     <% @array.each do |card| %>
-      <div class="flashcard" data-book-target="card" data-action="click->book#flipCards" data-controller="book">
+      <div class="flashcard d-none" data-book-target="card" data-action="click->book#flipCards">
         <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
         </div>
         <p class="flashcard-instruction">Touch to flip</p>
         <div class="flashcard__face flashcard__face--back"><%= card.translation_word %>
           <div id="flashcard-btn">
-            <button class="btn btn-danger" data-action="click->book#destroy">Don't know</button>
+            <button class="btn btn-danger" data-action="click->book#dontKnow">Don't know</button>
             <button class="btn btn-success" data-action="click->book#destroy">Know</button>
           </div>
         </div>
