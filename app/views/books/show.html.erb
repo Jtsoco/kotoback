@@ -10,14 +10,16 @@
     </div>
   </div>
   <h2 id="deck-total">This deck has <%= @deck.count %> cards</h2>
-  <button class="btn btn-primary", style="align-self: end;">Add Flashcard</button>
+  <%=link_to "Add Flashcard", new_book_card_path(@book), class:"btn btn-primary", style:"align-self: end;"  %>
   <div class="scene-show scene--card">
     <div class="flashcard-show-grid">
       <% @deck.each do |card| %>
         <div class="flashcard-show" data-book-target="card" data-action="click->book#flipCards" data-controller="book">
           <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
             <div id="flashcard-show-icons">
-              <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828911.png", class:"flashcard-show-edit" %>
+              <%= link_to edit_card_path(card) do %>
+                <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828911.png", class:"flashcard-show-edit" %>
+              <% end %>
               <%= image_tag "https://cdn-icons-png.flaticon.com/512/484/484611.png", class: "flashcard-show-delete" %>
             </div>
           </div>
