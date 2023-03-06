@@ -43,4 +43,4 @@
 .env*
 
 # Ignore this or merge fails
-ebook.epub
+book.epub
