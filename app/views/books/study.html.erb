@@ -1,4 +1,4 @@
-<div id= "flashcard-container">
+<div id= "flashcard-container" data-controller="progress">
   <h2 class="top-header"><%= @book.title %></h2>
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -11,6 +11,7 @@
     </div>
   </div>
   <div class="scene scene--card" >
+  <div class= "w-100" ><%= render "shared/progressbar"%></div>
     <% @array.each do |card| %>
       <div class="flashcard" data-book-target="card" data-action="click->book#flipCards" data-controller="book">
         <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
@@ -19,10 +20,8 @@
         <div class="flashcard__face flashcard__face--back"><%= card.translation_word %>
           <div id="flashcard-btn">
             <button class="btn btn-danger" data-action="click->book#destroy">Don't know</button>
-            <button class="btn btn-success" data-action="click->book#destroy">Know</button>
+            <button class="btn btn-success" data-action="click->progress#progress click->book#destroy">Know</button>
           </div>
-        </div>
-      </div>
     <% end %>
   </div>
 </div>

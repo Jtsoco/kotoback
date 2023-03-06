@@ -13,3 +13,6 @@ application.register("hello", HelloController)
 
 import BookController from "./book_controller"
 application.register("book", BookController)
+
+import ProgressController from "./progress_controller"
+application.register("progress", ProgressController)
