@@ -9,7 +9,7 @@ class EpubConverter
   end
 
   def call
-    File.open("ebook.epub", "wb") do |file|
+    File.open("book.epub", "wb") do |file|
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
       original_path = ApplicationController.helpers.cl_image_path @book.manuscript.key
       url = original_path.gsub("image", "raw")
@@ -17,28 +17,40 @@ class EpubConverter
       file.write(URI.open(url).read())
     end
 
-    book = EPUB::Parser.parse("ebook.epub")
+    book = EPUB::Parser.parse("book.epub")
     book.metadata.titles # => Array of EPUB::Publication::Package::Metadata::Title. Main title, subtitle, etc...
     book.metadata.title # => Title string including all titles
     book.metadata.creators # => Creators(authors)
 
+    def header(page)
+      if     page.content_document.nokogiri.search("h1").length.positive?
+        @h = "h1"
+      elsif  page.content_document.nokogiri.search("h2").length.positive?
+        @h = "h2"
+      elsif  page.content_document.nokogiri.search("h3").length.positive?
+        @h = "h3"
+      elsif  page.content_document.nokogiri.search("h4").length.positive?
+        @h = "h4"
+      elsif  page.content_document.nokogiri.search("h5").length.positive?
+        @h = "h5"
+      else
+        @h = "h6"
+      end
+    end
+
+
     title = book.metadata.title
     Dir.mkdir("app/assets/manuscripts/#{title}") unless Dir.exist?("app/assets/manuscripts/#{title}")
     book.each_page_on_spine do |page|
-      h2_count = page.content_document.nokogiri.search("h2").length
+      header(page)
+      h_count = page.content_document.nokogiri.search("#{@h}").length
       p_count = page.content_document.nokogiri.search("p").length
-      if h2_count.positive? && p_count.positive?
-        page.content_document
-        File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("h2").text}.html", "w") do |file|
-        # File.open("app/assets/manuscripts/#{title}/test5.html", "w") do |file|
-        # File.new("app/assets/manuscripts/#{title}/test3.html", "w") do |file|
-   
+      if h_count.positive? && p_count.positive?
+        File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("#{@h}").text}.html", "w") do |file|
           file.write(page.content_document.nokogiri)
         end
-        File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("h2").text}.html")
-        # File.join("app/assets/manuscripts/#{title}", 'test5.html')
+        File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("#{@h}").text}.html")
       end
-      # p page.content_document.nokogiri.children.first
       # @cloud.manuscript.purge
       # Cloudinary::Uploader.destroy("#{@book.manuscript.key}.epub", :resource_type => 'raw')
       # File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
@@ -48,18 +60,7 @@ class EpubConverter
   end
 end
 
-# def call
-#   reader = Epub::Reader.open("https://res.cloudinary.com/dickg3cpz/raw/upload/v1677638616/development/a7q18g5za80qc265phton8pl5ut6.epub")
-#   puts reader.epub_version
-#   puts reader.title
-#   puts reader.author
-#   puts reader.publication_date
-#   puts reader.language
-#   reader.pages.each do |page|
-#     puts page.title
-#     puts page.content
-#   end
-# end
+
 
 # folder = "Users/me/Desktop/stuff_to_zip"
 # input_filenames =
