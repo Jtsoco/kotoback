@@ -1,4 +1,4 @@
-class FecthBookCover
+class FetchBookCover
   def initialize(book)
     @book = book
   end
