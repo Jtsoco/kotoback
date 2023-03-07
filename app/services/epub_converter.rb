@@ -9,15 +9,20 @@ class EpubConverter
   end
 
   def call
-    File.open("book.epub", "wb") do |file|
+    # IMPORTANT!!!!!!!!!!
+    # book_content.epub MUST be ignored in .gitignore!
+    # IF NOT merging errors will sporadically occur!
+    File.open("book_content.epub", "wb") do |file|
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
       original_path = ApplicationController.helpers.cl_image_path @book.manuscript.key
       url = original_path.gsub("image", "raw")
       url += ".epub" unless url.match?(/\.epub/)
       file.write(URI.open(url).read())
     end
-
-    book = EPUB::Parser.parse("book.epub")
+    # IMPORTANT!!!!!!!!!!
+    # book_content.epub MUST be ignored in .gitignore!
+    # IF NOT merging errors will sporadically occur!
+    book = EPUB::Parser.parse("book_content.epub")
     book.metadata.titles # => Array of EPUB::Publication::Package::Metadata::Title. Main title, subtitle, etc...
     book.metadata.title # => Title string including all titles
     book.metadata.creators # => Creators(authors)
