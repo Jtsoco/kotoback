@@ -9,7 +9,7 @@ class EpubConverter
   end
 
   def call
-    File.open("book.epub", "wb") do |file|
+    File.open("book_content.epub", "wb") do |file|
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
       original_path = ApplicationController.helpers.cl_image_path @book.manuscript.key
       url = original_path.gsub("image", "raw")
@@ -17,7 +17,7 @@ class EpubConverter
       file.write(URI.open(url).read())
     end
 
-    book = EPUB::Parser.parse("book.epub")
+    book = EPUB::Parser.parse("book_content.epub")
     book.metadata.titles # => Array of EPUB::Publication::Package::Metadata::Title. Main title, subtitle, etc...
     book.metadata.title # => Title string including all titles
     book.metadata.creators # => Creators(authors)
@@ -57,6 +57,7 @@ class EpubConverter
       # File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
       # Dir.rmdir("app/assets/manuscripts/#{title}")
     end
+    File.delete(*Dir["book_content.epub"]) # Delete book.epub
     return title
   end
 end
