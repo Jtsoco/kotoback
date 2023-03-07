@@ -24,6 +24,8 @@ export default class extends Controller {
   destroy(event) {
     console.log(this.cardTarget.nextElementSibling)
     if (this.cardTarget.nextElementSibling == null) {
+      let card_id = this.cardTarget.dataset.cardId;
+      this.cardUpdate(event, card_id, true, false);
       this.deckTarget.innerHTML =
 
       "<div class='flashcard'><div class='flashcard__face flashcard__face--front'>Finished!</div></div>"
