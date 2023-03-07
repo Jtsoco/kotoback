@@ -11,7 +11,7 @@ export default class extends Controller {
     this.progressTarget.aria_valuemaxValue
     console.log(this.progressTarget.attributes["aria-valuenow"])
     this.progressTarget.attributes["aria-valuenow"].value = Number(this.progressTarget.attributes["aria-valuenow"].value)+1
-    this.progressTarget.innerText = `${Number(this.progressTarget.attributes["aria-valuenow"].value) + 1 } / ${Number(this.progressTarget.attributes["aria-valuemax"].value) }`
+    this.progressTarget.innerText = `${Number(this.progressTarget.attributes["aria-valuenow"].value) } / ${Number(this.progressTarget.attributes["aria-valuemax"].value) }`
     console.log(this.progressTarget.attributes["aria-valuemax"])
     this.progressTarget.style = `width: ${ (Number(this.progressTarget.attributes["aria-valuenow"].value)/Number(this.progressTarget.attributes["aria-valuemax"].value))*100
     }%`
