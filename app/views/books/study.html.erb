@@ -12,10 +12,13 @@
   </div>
   <%# put the data controller above the full array, as we'll need to give the first card active class %>
   <%# card-list will be targeted when page starts up %>
+  <div style= "width: 300px;" class= "pt-4">
+  <div class= "mw-100" ><%= render "shared/progressbar"%></div>
+  </div>
   <div class="scene scene--card" data-controller="book" data-book-target="deck" >
-  <div class= "w-100" ><%= render "shared/progressbar"%></div>
     <% @array.each do |card| %>
-      <div class="flashcard d-none" data-card-id="<%= card.id%>" data-book-target="card" data-controller="book">
+
+      <div class="flashcard d-none" data-card-id="<%= card.id%>" data-book-target="card">
         <div class="flashcard__face flashcard__face--front" data-controller='speech' data-language='EN'><span data-speech-target='word'><%= card.origin_word %></span>
           <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
         </div>
@@ -29,7 +32,7 @@
             <p class="flashcard-instruction-back" data-action="click->book#flipCards">Touch to flip</p>
           </div>
         </div>
-      </div>  
+      </div>
     <% end %>
   </div>
   <%= link_to "Edit your decks", book_path, class:"btn btn-primary", style:"align-self: center;" %>
