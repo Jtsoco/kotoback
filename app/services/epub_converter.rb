@@ -62,6 +62,7 @@ class EpubConverter
       # File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
       # Dir.rmdir("app/assets/manuscripts/#{title}")
     end
+    File.delete(*Dir["book_content.epub"]) # Delete book.epub
     return title
   end
 end
