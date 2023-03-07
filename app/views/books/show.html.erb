@@ -1,13 +1,13 @@
 <div id= "show-container">
   <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Chapter <%= params[:chapter] || "1" %>
     </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <ul class="dropdown-menu">
       <% @organized_chapters.each do |organized_chapter| %>
-        <%=link_to "Chapter #{organized_chapter}", book_path(@book, chapter: organized_chapter), class:"dropdown-item", data: { turbo:false }%>
+        <li><%=link_to "Chapter #{organized_chapter}", study_book_path(@book, chapter: organized_chapter), class:"dropdown-item", data: { turbo:false }%></li>
       <% end %>
-    </div>
+    </ul>
   </div>
   <h2 id="deck-total">This deck has <%= @deck.count %> cards</h2>
   <%=link_to "Add Flashcard", new_book_card_path(@book), class:"btn btn-primary", style:"align-self: end;"  %>
