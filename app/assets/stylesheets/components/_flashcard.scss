@@ -51,11 +51,11 @@
 }
 
 .flashcard__face--front {
-  background: crimson;
+  background: #1B7695;
 }
 
 .flashcard__face--back {
-  background: slateblue;
+  background: #13293d;
   transform: rotateY(180deg);
 }
 
@@ -64,9 +64,9 @@
   font-size: large;
   position: absolute;
   justify-self: unset;
-  color: black;
-  top: 68%;
-  right: 39%;
+  color: #1B7695;
+  top: 56%;
+  right: 44%;
 }
 
 .flashcard-instruction-back {
@@ -74,10 +74,10 @@
   font-size: large;
   position: absolute;
   justify-self: unset;
-  color: black;
-  top: 28%;
-  right: 39%;
-  height: 0px;
+  color: #13293d;
+  top: 56%;
+  right: 44%;
+
 }
 
 #flashcard-btn {
