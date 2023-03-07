@@ -4,7 +4,11 @@
     <% @books.each do |book| %>
       <div class="card my-relative">
         <div>
-          <%# <%=image_tag(book.image_url)%>
+        <% if book.image_url %>
+          <%= image_tag(book.image_url) %>
+        <% else %>
+          <%= image_tag("https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg") %>
+        <% end %>
           <div class="card-info">
             <h4><%= book.title %></h4>
             <p><%= book.cards.pluck(:chapter).last %> Chapters</p>
