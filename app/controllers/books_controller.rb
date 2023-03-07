@@ -25,7 +25,8 @@ class BooksController < ApplicationController
     else
       @cards = @book.cards.where(chapter: 1)
     end
-    @array = @cards.map { |card| card }
+    @unfinished = @cards.where(completed_today: false)
+    @array = @unfinished.map { |card| card }
 
     @organized_chapters = @book.cards.pluck(:chapter).uniq.sort
 
