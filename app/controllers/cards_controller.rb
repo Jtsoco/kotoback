@@ -28,7 +28,15 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     if params[:card][:completed_today]
-      @card.update(card_params_two)
+      # Using DateTime.now, not current, because when it saves in the DB
+      # It will automatically change it to UTC +00
+      # so that the cards next appearance is based on midnight
+      # of where the code is being run
+      # so with american servers it should be america
+      # TODO set to timezone of user if possible in the DateTime.now area
+      next_appearance = {next_appearance: DateTime.now.tomorrow.beginning_of_day}
+      @card.update(next_appearance)
+
     else
       @card.update(card_params)
     end
@@ -55,4 +63,5 @@ class CardsController < ApplicationController
   def card_params_two
     params.require(:card).permit(:failed_today, :completed_today)
   end
+
 end
