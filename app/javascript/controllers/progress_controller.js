@@ -10,11 +10,11 @@ export default class extends Controller {
   progress() {
     this.progressTarget.aria_valuemaxValue
     console.log(this.progressTarget.attributes["aria-valuenow"])
-    this.progressTarget.attributes["aria-valuenow"].value = Number(this.progressTarget.attributes["aria-valuenow"].value)+1
-    this.progressTarget.innerText = `${Number(this.progressTarget.attributes["aria-valuenow"].value) } / ${Number(this.progressTarget.attributes["aria-valuemax"].value) }`
+    this.progressTarget.attributes["aria-valuenow"].value = Number(this.progressTarget.attributes["aria-valuenow"].value) + 1
+    this.progressTarget.innerText = `${Number(this.progressTarget.attributes["aria-valuenow"].value)} / ${Number(this.progressTarget.attributes["aria-valuemax"].value)}`
     console.log(this.progressTarget.attributes["aria-valuemax"])
-    this.progressTarget.style = `width: ${ (Number(this.progressTarget.attributes["aria-valuenow"].value)/Number(this.progressTarget.attributes["aria-valuemax"].value))*100
-    }%`
+    this.progressTarget.style = `width: ${(Number(this.progressTarget.attributes["aria-valuenow"].value) / Number(this.progressTarget.attributes["aria-valuemax"].value)) * 100
+      }%`
   }
 
 }

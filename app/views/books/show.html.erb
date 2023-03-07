@@ -5,7 +5,7 @@
     </button>
     <ul class="dropdown-menu">
       <% @organized_chapters.each do |organized_chapter| %>
-        <li><%=link_to "Chapter #{organized_chapter}", study_book_path(@book, chapter: organized_chapter), class:"dropdown-item", data: { turbo:false }%></li>
+        <li><%=link_to "Chapter #{organized_chapter}", book_path(@book, chapter: organized_chapter), class:"dropdown-item", data: { turbo:false }%></li>
       <% end %>
     </ul>
   </div>
