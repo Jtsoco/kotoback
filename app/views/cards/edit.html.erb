@@ -1,18 +1,18 @@
 <div class='container'>
   <div class='d-flex'>
-
   </div>
   <h1 class='text-center pt-4'>Edit your card</h1>
 
   <div class='d-flex justify-content-around pt-3'>
     <div class='edit-word'>
-      <%= simple_form_for @card do |f| %>
+      <%= simple_form_for [@book, @card] do |f| %>
         <%= f.input :origin_word %>
     </div>
     <div class='edit-content'>
         <%= f.input :furigana %>
         <%= f.input :translation_word %>
         <%= f.input :example_sentence %>
+        <%= f.input :chapter %>
     </div>
   </div>
 
