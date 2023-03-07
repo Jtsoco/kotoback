@@ -2,14 +2,16 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { Application } from '@hotwired/stimulus'
+import { application } from "./application"
 
-
-const application = Application.start()
-
+import BookController from "./book_controller"
+application.register("book", BookController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import BookController from "./book_controller"
-application.register("book", BookController)
+import SpeechController from "./speech_controller"
+application.register("speech", SpeechController)
+
+import ProgressController from "./progress_controller"
+application.register("progress", ProgressController)

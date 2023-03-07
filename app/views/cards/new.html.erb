@@ -1,0 +1,11 @@
+<%= simple_form_for [@book, @card] do |f| %>
+  <%= f.input :origin_word, :label => 'Front Card Word' %>
+  <%= f.input :origin_definition, :label => 'Front Card Definition' %>
+  <%= f.input :translation_word, :label => 'Back Card Word' %>
+  <%= f.input :translation_definition, :label => 'Back Card Definiton' %>
+  <%= f.input :furigana, :label => 'Furigana' %>
+  <%= f.input :example_sentence, :label => 'Example Sentence' %>
+  <%= f.input :pronunciation, :label => 'Pronunciation' %>
+  <%= f.input :chapter, :label => 'Chapter Number' %>
+  <%= f.button :submit %>
+<% end %>
