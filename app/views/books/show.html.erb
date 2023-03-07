@@ -14,7 +14,7 @@
   <div class="scene-show scene--card">
     <div class="flashcard-show-grid">
       <% @deck.each do |card| %>
-        <div class="flashcard-show" data-book-target="card" data-controller="book">
+        <div class="flashcard-show" data-book-target="card" data-action="click->book#flipCards" data-controller="book">
           <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
             <div id="flashcard-show-icons">
               <%= link_to edit_card_path(card) do %>
@@ -24,18 +24,9 @@
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/484/484611.png", class: "flashcard-show-delete" %>
               <% end %>
             </div>
-            <p class="flashcard-instruction-back btn btn-light" data-action="click->book#flipCards">Flip</p>
           </div>
+          <p class="flashcard-instruction">Touch to flip</p>
           <div class="flashcard__face flashcard__face--back"><%= card.translation_word %>
-            <div id="flashcard-show-icons">
-              <%= link_to edit_card_path(card) do %>
-                <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828911.png", class:"flashcard-show-edit" %>
-              <% end %>
-              <%= link_to card_path(card), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-                <%= image_tag "https://cdn-icons-png.flaticon.com/512/484/484611.png", class: "flashcard-show-delete" %>
-              <% end %>
-            </div>
-            <p class="flashcard-instruction-back btn btn-light" data-action="click->book#flipCards">Flip</p>
           </div>
         </div>
       <% end %>
