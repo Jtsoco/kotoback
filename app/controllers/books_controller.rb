@@ -25,7 +25,8 @@ class BooksController < ApplicationController
     else
       @cards = @book.cards.where(chapter: 1)
     end
-    @unfinished = @cards.where(completed_today: false)
+    # compares the database time, to the current time. Both in UTC
+    @unfinished = @cards.where("next_appearance <= ?", DateTime.current)
     @array = @unfinished.map { |card| card }
 
     @organized_chapters = @book.cards.pluck(:chapter).uniq.sort
