@@ -27,9 +27,16 @@ class CardsController < ApplicationController
 
   def update
     @card = Card.find(params[:id])
-    @card.update(card_params)
+    if params[:card][:completed_today]
+      @card.update(card_params_two)
+    else
+      @card.update(card_params)
+    end
     authorize @card
-    redirect_to book_path(@card.book)
+    respond_to do |format|
+      format.html { redirect_to book_path(@card.book) }
+      format.json { head :ok }
+    end
   end
 
   def destroy
@@ -43,5 +50,9 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:origin_word, :translation_word, :chapter)
+  end
+
+  def card_params_two
+    params.require(:card).permit(:failed_today, :completed_today)
   end
 end

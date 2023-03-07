@@ -15,7 +15,7 @@
   <div class="scene scene--card" data-controller="book" data-book-target="deck" >
   <div class= "w-100" ><%= render "shared/progressbar"%></div>
     <% @array.each do |card| %>
-      <div class="flashcard" data-book-target="card" data-controller="book">
+      <div class="flashcard d-none" data-card-id="<%= card.id%>" data-book-target="card" data-controller="book">
         <div class="flashcard__face flashcard__face--front" data-controller='speech' data-language='EN'><span data-speech-target='word'><%= card.origin_word %></span>
           <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
         </div>
