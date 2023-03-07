@@ -14,7 +14,7 @@ class BooksController < ApplicationController
       @cards = @book.cards.where(chapter: 1)
     end
     @deck = @cards.map { |card| card }
-    @organized_chapters = @book.cards.pluck(:chapter).uniq
+    @organized_chapters = @book.cards.pluck(:chapter).uniq.sort
     authorize @book
   end
 
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
       @cards = @book.cards.where(chapter: 1)
     end
     @array = @cards.map { |card| card }
-    @organized_chapters = @book.cards.pluck(:chapter).uniq
+    @organized_chapters = @book.cards.pluck(:chapter).uniq.sort
     authorize @book
   end
 
