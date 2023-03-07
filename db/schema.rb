@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_084837) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_014007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,8 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_084837) do
     t.datetime "updated_at", null: false
     t.integer "chapter"
     t.string "chapter_title"
-    t.boolean "completed_today"
-    t.boolean "failed_today"
+    t.boolean "completed_today", default: false
+    t.boolean "failed_today", default: false
     t.index ["book_id"], name: "index_cards_on_book_id"
   end
 

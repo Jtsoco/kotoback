@@ -27,6 +27,7 @@ class BooksController < ApplicationController
     end
     @array = @cards.map { |card| card }
     @organized_chapters = @book.cards.pluck(:chapter).uniq
+    raise
     authorize @book
   end
 
