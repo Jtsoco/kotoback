@@ -64,7 +64,7 @@
   font-size: large;
   position: absolute;
   justify-self: unset;
-  color: white;
+  color: black;
   top: 68%;
   right: 39%;
 }
@@ -74,8 +74,8 @@
   font-size: large;
   position: absolute;
   justify-self: unset;
-  color: white;
-  top: 30%;
+  color: black;
+  top: 28%;
   right: 39%;
   height: 0px;
 }
@@ -149,6 +149,12 @@
   right: 10px;
 }
 
-.btn {
-  position: relative;
+.flashcard-show-flip {
+  font-weight: lighter;
+  font-size: large;
+  position: absolute;
+  justify-self: unset;
+  color: black;
+  top: 68%;
+  right: 43%;
 }
