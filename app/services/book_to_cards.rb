@@ -49,6 +49,9 @@ class BookToCards
     # TODO put in check for empty arrays
     @book.title = title
     @book.save
+    # have to use the title to set book cover
+    fetch_book_cover = FetchBookCover.new(@book)
+    fetch_book_cover.set_book_cover
     translated_chapter_arrays.each_with_index do |array, index|
       array.each do |hash|
         new_card(hash, index)
