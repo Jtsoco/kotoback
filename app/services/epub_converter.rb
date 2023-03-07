@@ -9,7 +9,7 @@ class EpubConverter
   end
 
   def call
-    File.open("book.epub", "wb") do |file|
+    File.open("book_content.epub", "wb") do |file|
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
       original_path = ApplicationController.helpers.cl_image_path @book.manuscript.key
       url = original_path.gsub("image", "raw")
@@ -17,27 +17,26 @@ class EpubConverter
       file.write(URI.open(url).read())
     end
 
-    book = EPUB::Parser.parse("book.epub")
+    book = EPUB::Parser.parse("book_content.epub")
     book.metadata.titles # => Array of EPUB::Publication::Package::Metadata::Title. Main title, subtitle, etc...
     book.metadata.title # => Title string including all titles
     book.metadata.creators # => Creators(authors)
 
     def header(page)
-      if     page.content_document.nokogiri.search("h1").length.positive?
+      if page.content_document.nokogiri.search("h1").length.positive?
         @h = "h1"
-      elsif  page.content_document.nokogiri.search("h2").length.positive?
+      elsif page.content_document.nokogiri.search("h2").length.positive?
         @h = "h2"
-      elsif  page.content_document.nokogiri.search("h3").length.positive?
+      elsif page.content_document.nokogiri.search("h3").length.positive?
         @h = "h3"
-      elsif  page.content_document.nokogiri.search("h4").length.positive?
+      elsif page.content_document.nokogiri.search("h4").length.positive?
         @h = "h4"
-      elsif  page.content_document.nokogiri.search("h5").length.positive?
+      elsif page.content_document.nokogiri.search("h5").length.positive?
         @h = "h5"
       else
         @h = "h6"
       end
     end
-
 
     title = book.metadata.title
     Dir.mkdir("app/assets/manuscripts/#{title}") unless Dir.exist?("app/assets/manuscripts/#{title}")
@@ -60,8 +59,6 @@ class EpubConverter
     return title
   end
 end
-
-
 
 # folder = "Users/me/Desktop/stuff_to_zip"
 # input_filenames =

@@ -25,8 +25,8 @@
         <div class="flashcard__face flashcard__face--back" data-controller='speech' data-language='JP'><span data-speech-target='word'><%= card.translation_word %></span>
           <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
           <div id="flashcard-btn">
-            <button class="btn btn-danger rounded-pill" data-action="click->book#dontKnow">Don't know</button>
-            <button class="btn btn-success rounded-pill" data-action="click->progress#progress click->book#destroy">Know</button>
+            <p class="btn btn-primary rounded-pill" data-action="click->book#dontKnow">Don't know</p>
+            <p class="btn btn-primary rounded-pill px-4" data-action="click->progress#progress click->book#destroy">Know</p>
             <p class="flashcard-instruction-back btn btn-light rounded-pill" data-action="click->book#flipCards">Flip</p>
           </div>
         </div>
