@@ -9,6 +9,11 @@ class EpubConverter
   end
 
   def call
+
+    # IMPORTANT!!!!!!!!!!
+    # book_content.epub MUST be ignored in .gitignore!
+    # IF NOT merging errors will sporadically occur!
+
     File.open("book_content.epub", "wb") do |file|
       # p url = Cloudinary::Utils.cloudinary_url(@book.manuscript.key) + '.epub'
       original_path = ApplicationController.helpers.cl_image_path @book.manuscript.key
@@ -16,6 +21,10 @@ class EpubConverter
       url += ".epub" unless url.match?(/\.epub/)
       file.write(URI.open(url).read())
     end
+
+    # IMPORTANT!!!!!!!!!!
+    # book_content.epub MUST be ignored in .gitignore!
+    # IF NOT merging errors will sporadically occur!
 
     book = EPUB::Parser.parse("book_content.epub")
     book.metadata.titles # => Array of EPUB::Publication::Package::Metadata::Title. Main title, subtitle, etc...
@@ -56,6 +65,7 @@ class EpubConverter
       # File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
       # Dir.rmdir("app/assets/manuscripts/#{title}")
     end
+    File.delete(*Dir["book_content.epub"]) # Delete book.epub
     return title
   end
 end

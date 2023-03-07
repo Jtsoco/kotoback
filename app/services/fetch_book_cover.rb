@@ -3,7 +3,7 @@ class FetchBookCover
     @book = book
   end
 
-  def set_book_cover(book_title)
+  def set_book_cover
     url = "https://openlibrary.org/search.json?q=#{@book.title}"
     book_serialized = URI.open(url).read
     book_url = JSON.parse(book_serialized)
@@ -19,6 +19,7 @@ class FetchBookCover
     else
       @book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
     end
+    @book.save
   end
 end
 
