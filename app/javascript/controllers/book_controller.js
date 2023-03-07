@@ -42,15 +42,21 @@ export default class extends Controller {
 
   dontKnow(event) {
     event.stopPropagation();
-    this.cardTarget.classList.toggle("active-card");
-    this.cardTarget.classList.toggle("d-none");
-    // TODO fix this flipping issue so I don't have to unflip here
-    this.cardTarget.classList.toggle("is-flipped");
-    this.cardTarget.nextElementSibling.classList.toggle("d-none");
-    this.cardTarget.nextElementSibling.classList.toggle("active-card");
-    // this.cardTarget.nextElementSibling.classList.toggle("is-flipped")
-    console.log(this.deckTarget)
-    this.deckTarget.appendChild(this.cardTarget)
+    if (this.cardTarget.nextElementSibling == null) {
+      this.cardTarget.classList.toggle("is-flipped");
+    }
+    else {
+
+      this.cardTarget.classList.toggle("active-card");
+      this.cardTarget.classList.toggle("d-none");
+      // TODO fix this flipping issue so I don't have to unflip here
+      this.cardTarget.classList.toggle("is-flipped");
+      this.cardTarget.nextElementSibling.classList.toggle("d-none");
+      this.cardTarget.nextElementSibling.classList.toggle("active-card");
+      // this.cardTarget.nextElementSibling.classList.toggle("is-flipped")
+      console.log(this.deckTarget)
+      this.deckTarget.appendChild(this.cardTarget)
+    }
     // TODO add cardUpdate to here so it updates with failed true
   }
 
