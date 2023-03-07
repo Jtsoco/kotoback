@@ -10,6 +10,7 @@
     </ul>
   </div>
   <h2 id="deck-total">This deck has <%= @deck.count %> cards</h2>
+  <h2 id="deck-total">Memorized cards: <%= @deck.count - @unfinished.count %>/<%= @deck.count %> cards</h2>
   <%=link_to "Add Flashcard", new_book_card_path(@book), class:"btn btn-primary", style:"align-self: end;"  %>
   <div class="scene-show scene--card">
     <div class="flashcard-show-grid">

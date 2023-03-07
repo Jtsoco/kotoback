@@ -14,6 +14,7 @@ class BooksController < ApplicationController
       @cards = @book.cards.where(chapter: 1)
     end
     @deck = @cards.map { |card| card }
+    @unfinished = @cards.where("next_appearance <= ?", DateTime.current)
     @organized_chapters = @book.cards.pluck(:chapter).uniq.sort
     authorize @book
   end
