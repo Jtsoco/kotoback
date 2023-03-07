@@ -4,7 +4,8 @@
   justify-content: center;
   height: 400px;
   width: 500px;
-  border: solid;
+  border: 15px ridge #78a3d9;
+  background-color: #d2dce8;
   padding: 16px;
 }
 
@@ -13,11 +14,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 400px;
   width: 500px;
-  border: solid;
+  border: 15px ridge #78a3d9;
+  background-color: #d2dce8;
   padding: 16px;
+}
+
+.edit-form {
+  width: 100%;
+  font-size: 40px;
 }
 
 .edit-cancel-button {
