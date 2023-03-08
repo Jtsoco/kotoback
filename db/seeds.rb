@@ -55,7 +55,6 @@ def make_books(index)
   end
 
   book.user = User.all[index]
-  book.chapters = 2
   puts book
   book.save
 end
