@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_073013) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
+    t.integer "chapters"
     t.bigint "user_id", null: false
     t.string "genre"
     t.string "image_url"
