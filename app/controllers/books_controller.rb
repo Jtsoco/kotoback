@@ -40,8 +40,8 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    title = "dummy title"
-    chapters = 1
+    title = "processing"
+    chapters = 0
     @book.title = title
     @book.chapters = chapters
     @book.user = current_user
@@ -50,7 +50,7 @@ class BooksController < ApplicationController
       # service = EpubConverter.new(@book)
       # service.call
       BookToCards.perform_later(@book)
-      flash[:notice] = "Feel free to browse as you wait"
+      flash[:notice] = "Your book is processing! It'll be available in 'My Books' in a few minutes"
 
       # BookToCards.new(@book).card_creator(@book)
       # redirect_to makes an http request to an url
