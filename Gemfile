@@ -32,7 +32,8 @@ gem "pundit"
 # gem 'rubyzip'
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+# gem "redis", "~> 4.0"
+gem "redis", "~> 3.3.3"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -68,7 +69,7 @@ gem 'suika'
 gem 'eiwa'
 # Sidekiq gems for asynchonous jobs
 # make sure to install redis on local computer, and that redis is on live server when using
-gem "sidekiq"
+gem "sidekiq", "< 7"
 gem "sidekiq-failures", "~> 1.0"
 
 
