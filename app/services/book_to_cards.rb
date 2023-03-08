@@ -17,6 +17,8 @@ class BookToCards < ApplicationJob
     # title = @books.metadata.title
     epub_parser = EpubParser.new(title)
     chapter_texts = epub_parser.parse_chapters
+    File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new books directory
+    Dir.rmdir("app/assets/manuscripts/#{title}")
     # Now we should have an array of chapter texts
     text_tokenizer_english = TextTokenizerEnglish.new(chapter_texts)
     tokenized_arrays = text_tokenizer_english.tokenize_all
@@ -60,9 +62,6 @@ class BookToCards < ApplicationJob
         new_card(hash, index, books)
       end
     end
-    File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new books directory
-    Dir.rmdir("app/assets/manuscripts/#{title}")
-
   end
 
   def new_card(hash, index, books)
