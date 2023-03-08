@@ -10,8 +10,11 @@ application.register("book", BookController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ProgressController from "./progress_controller"
+application.register("progress", ProgressController)
+
 import SpeechController from "./speech_controller"
 application.register("speech", SpeechController)
 
-import ProgressController from "./progress_controller"
-application.register("progress", ProgressController)
+import SpinnerController from "./spinner_controller"
+application.register("spinner", SpinnerController)

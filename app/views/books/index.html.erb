@@ -1,6 +1,13 @@
 <div id="class-container">
   <h1 class="top-header">My Books 📚</h1>
   <div class="cards">
+    <div class='upload-card'>
+      <%# <i class=" upload-icon fa-solid fa-book-medical"></i> %>
+      <%= render "shared/index_book_upload", book: @book, class: 'upload-card-content' %>
+      <% if @book.manuscript.attached? %>
+        <%= cl_image_path @book.manuscript.key %>
+      <% end %>
+    </div>
     <% @books.each do |book| %>
       <div class="card my-relative">
         <div>

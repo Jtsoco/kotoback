@@ -10,6 +10,46 @@
   grid-gap: 100px;
 }
 
+.upload-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 300px;
+  border: 6px dashed;
+  padding: 16px;
+  color: #6e8898;
+  font-size: 30px;
+}
+
+.upload-book {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
+  color: #6e8898;
+  height: 202px;
+  width: 160px;
+  border-radius: 30px;
+  border: solid;
+  position: relative;
+  top: -20px;
+  cursor: pointer;
+}
+
+.upload-card-content {
+  color: rgb(43, 40, 40);
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.books-add-btn {
+  text-align: center;
+}
+
 .card {
   background-size: cover;
   background-position: center;
@@ -44,7 +84,4 @@
   margin-bottom: 15px;
   font-size: large;
   text-align: center;
-}
-
-.active-card {
 }
