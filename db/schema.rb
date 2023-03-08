@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_072046) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_08_074102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,13 +44,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_072046) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.integer "chapters"
     t.bigint "user_id", null: false
     t.string "genre"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "author"
+    t.boolean "processing", default: true
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_072046) do
     t.string "chapter_title"
     t.boolean "completed_today", default: false
     t.boolean "failed_today", default: false
-    t.datetime "next_appearance", default: "2023-03-06 15:00:00"
+    t.datetime "next_appearance", default: "2023-03-07 15:00:00"
     t.index ["book_id"], name: "index_cards_on_book_id"
   end
 
