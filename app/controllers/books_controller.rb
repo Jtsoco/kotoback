@@ -29,7 +29,6 @@ class BooksController < ApplicationController
     # compares the database time, to the current time. Both in UTC
     @unfinished = @cards.where("next_appearance <= ?", DateTime.current)
     @array = @unfinished.map { |card| card }
-
     @organized_chapters = @book.cards.pluck(:chapter).uniq.sort
 
     authorize @book
@@ -50,14 +49,23 @@ class BooksController < ApplicationController
     if @book.save
       # service = EpubConverter.new(@book)
       # service.call
-      service = BookToCards.new(@book)
-      hash = service.card_creator
+      BookToCards.perform_later(@book)
+      flash[:notice] = "Feel free to browse as you wait"
+
+      # BookToCards.new(@book).card_creator(@book)
       # redirect_to makes an http request to an url
       redirect_to books_path # to change to the edit path once it is up
     else
       # render a file through its path
       render "books/index", status: :unprocessable_entity # to change to the edit once it is up
     end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    authorize @book
+    @book.destroy
+    redirect_to books_path, status: :see_other
   end
 
   private

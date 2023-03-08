@@ -10,7 +10,9 @@
     </div>
     <% @books.each do |book| %>
       <div class="card my-relative">
-        <div>
+        <div id="delete-icon">
+        </div>
+      <div>
           <% if book.image_url %>
             <%= image_tag(book.image_url) %>
           <% else %>
@@ -23,6 +25,9 @@
           </div>
         </div>
         <%= link_to '', study_path(book), class: "my-overlay" %>
+        <%= link_to book_path(book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+            <%= image_tag "https://cdn-icons-png.flaticon.com/512/484/484560.png", id: "card-show-delete" %>
+        <% end %>
       </div>
     <% end %>
   </div>
