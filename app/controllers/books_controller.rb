@@ -49,8 +49,10 @@ class BooksController < ApplicationController
     if @book.save
       # service = EpubConverter.new(@book)
       # service.call
-      service = BookToCards.new(@book)
-      hash = service.card_creator
+      BookToCards.perform_later(@book)
+      flash[:notice] = "Feel free to browse as you wait"
+
+      # BookToCards.new(@book).card_creator(@book)
       # redirect_to makes an http request to an url
       redirect_to books_path # to change to the edit path once it is up
     else

@@ -23,5 +23,8 @@ module Kotoback
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    # this is needed for asynchronous jobs
+    # namely our book upload
+    config.active_job.queue_adapter = :sidekiq
   end
 end
