@@ -41,9 +41,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     title = "dummy title"
-    chapters = 1
     @book.title = title
-    @book.chapters = chapters
     @book.user = current_user
     authorize @book
     if @book.save
