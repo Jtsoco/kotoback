@@ -47,23 +47,31 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    title = "dummy title"
-    chapters = 1
+
+    title = "processing"
     @book.title = title
-    @book.chapters = chapters
     @book.user = current_user
     authorize @book
     if @book.save
       # service = EpubConverter.new(@book)
       # service.call
-      service = BookToCards.new(@book)
-      hash = service.card_creator
+      BookToCards.perform_later(@book)
+      flash[:notice] = "Your book is processing! It'll be available in 'My Books' in a few minutes"
+
+      # BookToCards.new(@book).card_creator(@book)
       # redirect_to makes an http request to an url
       redirect_to books_path # to change to the edit path once it is up
     else
       # render a file through its path
       render "books/index", status: :unprocessable_entity # to change to the edit once it is up
     end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    authorize @book
+    @book.destroy
+    redirect_to books_path, status: :see_other
   end
 
   private

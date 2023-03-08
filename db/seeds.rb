@@ -28,6 +28,7 @@ def make_books(index)
   book.title = BOOK_TITLES.sample
   book.genre = Faker::Book.genre
   book.author = Faker::Book.author
+  book.processing = false
 
   # for testing purposes
   # https://openlibrary.org/search.json?q=
@@ -55,7 +56,6 @@ def make_books(index)
   end
 
   book.user = User.all[index]
-  book.chapters = 2
   puts book
   book.save
 end

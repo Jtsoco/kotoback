@@ -531,6 +531,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
+
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/merge-stream/-/merge-stream-2.0.0.tgz"
@@ -703,6 +708,13 @@ stimulus-dropdown@^2.1.0:
   integrity sha512-p4Bs56/ilB2E0lfFaNajKIHZK1PMUUDnhDl74f97bn087fxIfRB7WQekVtTTWJdRlf3EIgSsDX7K1TsaLiIcLg==
   dependencies:
     stimulus-use "^0.51.1"
+
+stimulus-rails-autosave@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/stimulus-rails-autosave/-/stimulus-rails-autosave-4.1.1.tgz#c92968e2ce6311f87e727772d5792c47bd725b0d"
+  integrity sha512-cvmaPG19rKHLGsmOVcDjS683Get+0gSZ2n0btXJaN/Lkh/9zkvvVMfLWKIUBnoDUeHrmcJ/mSMECTjEvv+6b7g==
+  dependencies:
+    lodash.debounce "^4.0.8"
 
 stimulus-use@^0.51.1:
   version "0.51.3"

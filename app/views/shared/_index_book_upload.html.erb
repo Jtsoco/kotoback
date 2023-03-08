@@ -1,0 +1,4 @@
+<%= simple_form_for book, html: {data: { controller: 'spinner', action: 'turbo:submit-start->spinner#insertspin'}}  do |f| %>
+  <%= f.input :manuscript, input_html: { class: 'd-none', onchange: 'this.form.submit()' }, label_html: { class: 'books-upload-book'}, label: '+' %>
+  <p class='books-add-btn'>Add a book</p>
+<% end %>

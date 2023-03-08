@@ -5,16 +5,19 @@ export default class extends Controller {
 
   connect() {
     console.log("progress bar controller")
-    this.progress()
+    this.current = this.progressTarget.attributes["aria-valuenow"]
+    this.max = this.progressTarget.attributes["aria-valuemax"]
+    this.displayProgress()
   }
 
   progress() {
-    this.progressTarget.aria_valuemaxValue
-    console.log(this.progressTarget.attributes["aria-valuenow"])
-    this.progressTarget.attributes["aria-valuenow"].value = Number(this.progressTarget.attributes["aria-valuenow"].value) + 1
-    this.progressTarget.innerText = `${Number(this.progressTarget.attributes["aria-valuenow"].value)} / ${Number(this.progressTarget.attributes["aria-valuemax"].value)}`
-    console.log(this.progressTarget.attributes["aria-valuemax"])
-    this.progressTarget.style = `width: ${(Number(this.progressTarget.attributes["aria-valuenow"].value) / Number(this.progressTarget.attributes["aria-valuemax"].value)) * 100
+    this.current.value = Number(this.current.value) + 1
+    this.displayProgress()
+  }
+
+  displayProgress() {
+    this.progressTarget.innerText = `${Number(this.current.value)} / ${Number(this.max.value)}`
+    this.progressTarget.style = `width: ${this.current.value === "0" ? "auto" : (Number(this.current.value) / Number(this.max.value)) * 100
       }%`
   }
 
