@@ -5,19 +5,19 @@ class BookToCards < ApplicationJob
 
 
 
-  def perform(books)
-    card_creator(books)
+  def perform(book)
+    card_creator(book)
   end
 
-  def card_creator(books) #name pending
+  def card_creator(book) #name pending
     # make the local directory
-    epub_converter = EpubConverter.new(books)
+    epub_converter = EpubConverter.new(book)
     title = epub_converter.call
     # calling the epub converter here instead of the controller
-    # title = @books.metadata.title
+    # title = @book.metadata.title
     epub_parser = EpubParser.new(title)
     chapter_texts = epub_parser.parse_chapters
-    File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new books directory
+    File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
     Dir.rmdir("app/assets/manuscripts/#{title}")
     # Now we should have an array of chapter texts
     text_tokenizer_english = TextTokenizerEnglish.new(chapter_texts)
@@ -52,24 +52,26 @@ class BookToCards < ApplicationJob
     # remove nil arrays from quick fix
     translated_chapter_arrays.compact!
     # TODO put in check for empty arrays
-    books.title = title
-    books.save
-    # have to use the title to set books cover
-    fetch_book_cover = FetchBookCover.new(books)
+    book.title = title
+    book.save
+    # have to use the title to set book cover
+    fetch_book_cover = FetchBookCover.new(book)
     fetch_book_cover.set_book_cover
     translated_chapter_arrays.each_with_index do |array, index|
       array.each do |hash|
-        new_card(hash, index, books)
+        new_card(hash, index, book)
       end
     end
+    book.processing = false
+    book.save
   end
 
-  def new_card(hash, index, books)
+  def new_card(hash, index, book)
     card = Card.new
     card.origin_word = hash[:origin_word]
     card.translation_word = hash[:translation_word]
     card.chapter = index + 1
-    card.book = books
+    card.book = book
     card.save
   end
 end
