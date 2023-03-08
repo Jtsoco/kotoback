@@ -15,6 +15,13 @@ class BooksController < ApplicationController
     end
     @deck = @cards.map { |card| card }
     @unfinished = @cards.where("next_appearance <= ?", DateTime.current)
+    if params[:filter].present? && params[:filter] == "unfinished"
+      @cards = @unfinished
+    elsif params[:filter].present? && params[:filter] == "finished"
+      @cards = @deck - @unfinished
+    else
+      @cards = @deck
+    end
     @organized_chapters = @book.cards.pluck(:chapter).uniq.sort
     authorize @book
   end

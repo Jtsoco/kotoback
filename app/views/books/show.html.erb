@@ -1,21 +1,33 @@
 <div id= "show-container">
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Chapter <%= params[:chapter] || "1" %>
-    </button>
-    <ul class="dropdown-menu">
-      <% @organized_chapters.each do |organized_chapter| %>
-        <li><%=link_to "Chapter #{organized_chapter}", book_path(@book, chapter: organized_chapter), class:"dropdown-item", data: { turbo:false }%></li>
-      <% end %>
-    </ul>
+  <div class="options" style="width: 25%; display:flex; justify-content: space-between;">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Chapter <%= params[:chapter] || "1" %>
+      </button>
+      <ul class="dropdown-menu">
+        <% @organized_chapters.each do |organized_chapter| %>
+          <li><%=link_to "Chapter #{organized_chapter}", book_path(@book, chapter: organized_chapter), class:"dropdown-item", data: { turbo:false }%></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Display
+      </button>
+      <ul class="dropdown-menu">
+        <li><%=link_to "Finished Cards", book_path(@book, chapter: params[:chapter], filter: "finished"), class:"dropdown-item", data: { turbo:false }%></li>
+        <li><%=link_to "Unfinished Cards", book_path(@book, chapter: params[:chapter], filter: "unfinished"), class:"dropdown-item", data: { turbo:false }%></li>
+        <li><%=link_to "All", book_path(@book, chapter: params[:chapter]), class:"dropdown-item", data: { turbo:false }%></li>
+      </ul>
+    </div>
   </div>
-  <h2 id="deck-total">This deck has <%= @deck.count %> cards</h2>
-  <h2 id="deck-total">Cards completed today: <%= @deck.count - @unfinished.count %>/<%= @deck.count %> cards</h2>
+  <h2 id="deck-total">Flashcards: <%= @cards.count %></h2>
+  <h2 id="deck-total">✅ <%= @deck.count - @unfinished.count %>/<%= @deck.count %> cards</h2>
   <%=link_to "Back to study", study_book_path(@book, chapter: params[:chapter]), class:"btn btn-primary", style:"align-self: start;"  %>
   <%=link_to "Add Flashcard", new_book_card_path(@book), class:"btn btn-primary", style:"align-self: end;"  %>
   <div class="scene-show scene--card">
     <div class="flashcard-show-grid">
-      <% @deck.each do |card| %>
+      <% @cards.each do |card| %>
         <div class="flashcard-show" data-book-target="card" data-controller="book">
           <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
             <div id="flashcard-show-icons">
