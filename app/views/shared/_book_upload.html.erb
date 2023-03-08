@@ -1,4 +1,3 @@
-<%= simple_form_for(book)  do |f| %>
-  <%= f.input :manuscript, as: :file, label: "Upload a book" %>
-  <%= f.button :submit, class: 'btn btn-primary'%>
+<%= simple_form_for book do |f| %>
+  <%= f.input :manuscript, input_html: { class: 'd-none', onchange: 'this.form.submit()' }, label_html: { class: 'home-upload-book' }, label: "Upload a book 📙" %>
 <% end %>
