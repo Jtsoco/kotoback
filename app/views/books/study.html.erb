@@ -39,5 +39,5 @@
       <% end %>
     <% end %>
   </div>
-  <%= link_to "See your cards", book_path, class:"btn btn-primary", style:"align-self: center;" %>
+  <%= link_to "See your cards", book_path(@book, chapter: params[:chapter]), class:"btn btn-primary", style:"align-self: center;" %>
 </div>
