@@ -66,6 +66,10 @@ gem 'suika'
 # the JMdict
 # Using this we can create a dictionary for our use
 gem 'eiwa'
+# Sidekiq gems for asynchonous jobs
+# make sure to install redis on local computer, and that redis is on live server when using
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"
 
 
 
