@@ -6,6 +6,7 @@ export default class extends Controller {
   connect() {
     console.log("progress bar controller")
     this.progress()
+    Number(this.progressTarget.attributes["aria-valuenow"].value) -1
   }
 
   progress() {
