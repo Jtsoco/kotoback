@@ -28,7 +28,7 @@ export default class extends Controller {
       this.cardUpdate(event, card_id, true, false);
       this.deckTarget.innerHTML =
 
-      "<div class='flashcard'><div class='flashcard__face flashcard__face--front'>Finished!</div></div>"
+        "<div class='flashcard'><div class='flashcard__face flashcard__face--front'>Finished!</div></div>"
     }
     this.cardTarget.nextElementSibling.classList.toggle("d-none");
     this.cardTarget.nextElementSibling.classList.toggle("active-card");
@@ -74,16 +74,16 @@ export default class extends Controller {
       method: "PATCH",
       // Accept is for what format we get back
       // content-type is telling the controller what format we are giving it
-      headers: {Accept: "application/json", "Content-Type": "application/json", "X-CSRF-Token": csrfToken,},
+      headers: { Accept: "application/json", "Content-Type": "application/json", "X-CSRF-Token": csrfToken, },
       // the body is the parameters i'm sending it
       // the key, and the value
 
-      body: JSON.stringify({card: {"completed_today": completed, "failed_today": failed }})
+      body: JSON.stringify({ card: { "completed_today": completed, "failed_today": failed } })
 
     })
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data)
-    })
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data)
+      })
   }
 }
