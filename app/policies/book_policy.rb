@@ -31,7 +31,7 @@ class BookPolicy < ApplicationPolicy
     # user: the `current_user` signed in with Devise
   end
 
-  def delete?
+  def destroy?
     record.user == user
     # record: the book passed to the `authorize` method in controller
     # user: the `current_user` signed in with Devise
