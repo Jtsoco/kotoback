@@ -36,18 +36,20 @@
           <div class="d-flex justify-content-center " style="width:100%">
             <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px;"data-action="click->book#flipCards"> Flip</p>
           </div>
-          <div class="flashcard__face flashcard__face--back" data-controller='speech' data-language='JP'>
-            <p><%= card.furigana %></p>
-            <span data-speech-target='word'><% if card.translation_word.split.size <= 3 %></span>
-              <div class="word-size" style="font-size: 24px;">
+          <div class="flashcard__face flashcard__face--back" data-language='JP'>
+            <div class="word-size" style="font-size: 24px;">
+              <p><%= card.furigana %></p>
+            </div>
+            <% if card.translation_word.split.length >= 3 %>
+              <span data-speech-target='word' data-controller='speech' style="font-size: 16px">
                 <%= card.translation_word %>
                 <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
-              </div>
+              </span>
             <% else %>
-              <div class="word-size" style="font-size: 24px;">
-                <%= card.translation_word  %>
+              <span data-speech-target='word' data-controller='speech'>
+                <%= card.translation_word %>
                 <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
-              </div>
+              </span>
             <% end %>
             <div class="d-flex justify-content-between " style="width:100%">
               <button class="btn btn-primary rounded-pill" style="position: absolute; bottom: 10px; left: 44px;" data-action="click->book#dontKnow">Don't know</button>
