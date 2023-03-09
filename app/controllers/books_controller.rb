@@ -53,9 +53,12 @@ class BooksController < ApplicationController
     @book.user = current_user
     authorize @book
     if @book.save
-      # service = EpubConverter.new(@book)
-      # service.call
+      service = EpubConverter.new(@book)
+      service.call
       BookToCards.perform_later(@book)
+      # book_to_cards_ja = BookToCardsJa.new(@book)
+      # book_to_cards_ja.card_creator
+
       flash[:notice] = "Your book is processing! It'll be available in 'My Books' in a few minutes"
 
       # BookToCards.new(@book).card_creator(@book)
