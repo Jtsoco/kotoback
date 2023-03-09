@@ -55,7 +55,9 @@ class BooksController < ApplicationController
     if @book.save
       service = EpubConverter.new(@book)
       service.call
-      BookToCards.perform_later(@book)
+      BookToCardsJa.perform_later(@book)
+      # book_to_cards_ja_trial = BookToCardsJaTrial.new(@book)
+      # book_to_cards_ja_trial.card_creator
       # book_to_cards_ja = BookToCardsJa.new(@book)
       # book_to_cards_ja.card_creator
 

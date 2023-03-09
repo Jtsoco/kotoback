@@ -14,8 +14,7 @@ class TranslateJapanese
         {
           origin_word: word,
           translation_word: translation[index].text,
-          furigana: @chapter[index][8],
-          dictionary: @chapter[index][7],
+          furigana: @chapter[index][1],
         }
       end
     elsif @array.length == 0

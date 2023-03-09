@@ -1,15 +1,18 @@
-class BookToCardsJa < ApplicationJob
-  queue_as :default
-
-  def perform(book)
-    card_creator(book)
+class BookToCardsJaTrial
+  def initialize(book)
+    @book = book
   end
-  def card_creator(book) #name pending
+  # queue_as :default
+
+  # def perform(book)
+  #   card_creator(book)
+  # end
+  def card_creator #name pending
     # make the local directory
-    epub_converter = EpubConverter.new(book)
+    epub_converter = EpubConverter.new(@book)
     title = epub_converter.call
     # calling the epub converter here instead of the controller
-    # title = book.metadata.title
+    # title = @book.metadata.title
     epub_parser = EpubParser.new(title)
     chapter_texts = epub_parser.parse_chapters
     File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
@@ -34,16 +37,16 @@ class BookToCardsJa < ApplicationJob
       end
     end
     translated_chapter_arrays.compact!
-    book.title = title
-    book.save
+    @book.title = title
+    @book.save
     translated_chapter_arrays.each_with_index do |array, index|
       array.each do |hash|
-        new_card(hash, index, book)
+        new_card(hash, index, @book)
       end
     end
-    book.processing = false
-    book.save
-    fetch_book_cover = FetchBookCover.new(book)
+    @book.processing = false
+    @book.save
+    fetch_book_cover = FetchBookCover.new(@book)
     fetch_book_cover.set_book_cover
   end
 
