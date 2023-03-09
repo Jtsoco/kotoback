@@ -34,7 +34,9 @@
             <% end %>
           </div>
           <p class="flashcard-instruction-front btn btn-light rounded-pill" data-action="click->book#flipCards">Flip</p>
-          <div class="flashcard__face flashcard__face--back" data-controller='speech' data-language='JP'><span data-speech-target='word'><% if card.translation_word.split.size == 1 %></span>
+          <div class="flashcard__face flashcard__face--back" data-controller='speech' data-language='JP'>
+            <p><%= card.furigana %></p>
+            <span data-speech-target='word'><% if card.translation_word.split.size == 1 %></span>
               <%= card.translation_word %>
               <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
             <% else %>
