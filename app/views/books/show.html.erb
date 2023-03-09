@@ -68,10 +68,14 @@
             </div>
           </div>
           <div class="flashcard__face flashcard__face--back">
-            <p><%= card.furigana %></p>
             <div class="word-size" style="font-size: 24px;">
-              <p><%= card.translation_word %></p>
+              <p><%= card.furigana %></p>
             </div>
+            <% if card.translation_word.split.length >= 3 %>
+              <p style="font-size:24px"><%= card.translation_word %></p>
+            <% else %>
+              <p><%= card.translation_word %></p>
+            <% end %>
             <div id="flashcard-show-icons">
               <%= link_to edit_card_path(card) do %>
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828802.png", class:"flashcard-show-edit" %>
