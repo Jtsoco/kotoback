@@ -53,7 +53,7 @@ class BooksController < ApplicationController
     @book.user = current_user
     authorize @book
     if @book.save
-      service = EpubConverter.new(@book)
+      service = EpubConverterEng.new(@book)
       service.call
       BookToCardsJa.perform_later(@book)
       # book_to_cards_ja_trial = BookToCardsJaTrial.new(@book)

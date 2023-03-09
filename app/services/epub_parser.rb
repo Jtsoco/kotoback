@@ -6,7 +6,7 @@ class EpubParser #change name to HTMLParser
   def parse_chapters
    chapters = Dir.glob("app/assets/manuscripts/#{@folder}/**/*.html")
    chapter_texts = chapters.map do |chapter|
-    Nokogiri::HTML(open(chapter)).text
+    Nokogiri::XML(open(chapter)).text
    end
    chapter_texts
    end

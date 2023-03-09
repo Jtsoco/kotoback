@@ -59,7 +59,8 @@ class EpubConverter
         File.open("app/assets/manuscripts/#{title}/#{header.text}.html", "w") do |file|
           file.write(content)
         end
-        content.remove
+        # content.remove
+        File.join("app/assets/manuscripts/#{title}", "#{header.text}.html")
       end
 
       # if h_count.positive? && p_count.positive?
