@@ -13,7 +13,11 @@ class FetchBookCover
       book_serialized = URI.open(url).read
       json_book = JSON.parse(book_serialized)
       book_cover = json_book["ISBN:#{book_isbn}"]
+      if json_book["ISBN:#{book_isbn}"].include?("cover")
       @book.image_url = json_book["ISBN:#{book_isbn}"]["cover"]["medium"]
+      else
+        @book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
+      end
     else
       @book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
     end
