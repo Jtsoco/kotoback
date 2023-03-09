@@ -39,7 +39,6 @@ class CardsController < ApplicationController
     else
       @card.update(card_params)
     end
-    @card.save
     authorize @card
     respond_to do |format|
       format.html { redirect_to book_path(@card.book) }
