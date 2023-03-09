@@ -36,10 +36,10 @@ class CardsController < ApplicationController
       # TODO set to timezone of user if possible in the DateTime.now area
       next_appearance = {next_appearance: DateTime.now.tomorrow.beginning_of_day}
       @card.update(next_appearance)
-
     else
       @card.update(card_params)
     end
+    @card.save
     authorize @card
     respond_to do |format|
       format.html { redirect_to book_path(@card.book) }
