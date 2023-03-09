@@ -19,20 +19,13 @@
   cursor: pointer;
 }
 
-.language-dropdowns {
-  padding-top: 32px;
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-}
 
 .home-container h2 {
   padding-top: 48px;
 }
 
 #instructions-title {
-  padding-right: 47px;
-  margin-top: 40px;
+  margin-top: 30px;
 
 }
 
@@ -41,115 +34,65 @@
   display: flex;
 }
 
-.instruction-image-side {
-  width: 50%;
-  position: relative;
+.homepage-logo {
+  margin-top: 30px;
+  width: 725px;
 }
 
-.instruction-image {
-  height: 500px;
-  width: 500px;
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 70px;
+  width: 80%;
+  margin: 20px;
 }
 
-.instruction1 {
-  padding-left: 12%;
-  margin-top: 16px;
+.feature-category {
+  background-size: cover;
+  background-position: center;
+  height: 278px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.screenshot1 {
-  border: 2px #1b7695 solid;
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
 
-.gorilla-logo {
-  width: 200px;
-  position: absolute;
-  top: 35%;
-  left: 200px;
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
 
-.gorilla-logo-sh2 {
-  width: 200px;
-  position: absolute;
-  top: 44%;
-  left: 200px;
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.instruction2 {
-  padding-left: 12%;
-  margin-top: 16px;
-  width: 450px;
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
-.screenshot2 {
-  border: 2px #1b7695 solid;
-  width: 588px;
-}
-
-.gorilla-logo-sh3 {
-  width: 200px;
-  position: absolute;
-  top: 15%;
-  left: 324px;
-}
-
-.instruction3 {
-  padding-left: 12%;
-  margin-top: 16px;
-  width: 450px;
-}
-
-.screenshot3 {
-  border: 2px #1b7695 solid;
-  width: 588px;
-}
-
-.gorilla-logo-sh4 {
-  width: 185px;
-  position: absolute;
-  top: 15%;
-  left: 357px;
-}
-
-.instruction4 {
-  padding-left: 12%;
-  margin-top: 16px;
-  width: 450px;
-}
-
-.screenshot4 {
-  border: 2px #1b7695 solid;
-  width: 588px;
-}
-
-.gorilla-logo-5 {
-  width: 180px;
-  position: absolute;
-  top: 15%;
-  left: 43px;
-}
-
-.gorilla-logo-6 {
-  width: 180px;
-  position: absolute;
-  top: 15%;
-  left: 357px;
-}
-
-.instruction5 {
-  padding-left: 12%;
-  margin-top: 16px;
-  width: 450px;
-}
-
-.gorilla-logo-7 {
-  width: 306px;
-  position: absolute;
-  bottom: -7%;
-  right: 61px;
-}
-
-.instruction6 {
-  padding-left: 12%;
-  margin-top: 16px;
-  width: 450px;
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

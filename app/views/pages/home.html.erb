@@ -1,9 +1,21 @@
 <div class='home-container'>
+  <%= image_tag "homepage-logo.png", class:"homepage-logo"%>
   <h1 id="instructions-title">Turn your books into flashcards</h1>
   <div class='home-upload-form'>
     <%= render "shared/book_upload", book: @book %>
     <% if @book.manuscript.attached? %>
       <%= cl_image_path @book.manuscript.key %>
     <% end %>
+  </div>
+  <div class="features">
+    <div class="feature-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn-icons-png.flaticon.com/512/5020/5020671.png)">
+      Upload a book
+    </div>
+    <div class="feature-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn-icons-png.flaticon.com/512/5020/5020845.png)">
+      Study difficult words
+    </div>
+    <div class="feature-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn-icons-png.flaticon.com/512/5020/5020751.png)">
+      Enjoy Reading
+    </div>
   </div>
 </div>
