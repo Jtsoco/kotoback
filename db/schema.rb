@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_074102) do
     t.string "chapter_title"
     t.boolean "completed_today", default: false
     t.boolean "failed_today", default: false
-    t.datetime "next_appearance", default: "2023-03-06 15:00:00"
+    t.datetime "next_appearance", default: "2023-03-07 15:00:00"
     t.index ["book_id"], name: "index_cards_on_book_id"
   end
 
