@@ -21,6 +21,8 @@ class JapaneseFilter
     # this should iterate over the unique, and count the equivalent words in the version that isn't unique, then put it into the end of the array at index 10
     unique_singular.each {|arr| arr << no_single_letters.count(arr)}
     final_filtered = unique_singular.select {|arr| one_word_version.include?(arr[0])}
+    # return it sorted, biggest to last
+    final_filtered.sort_by { |a| -a.last}
 
   end
 
