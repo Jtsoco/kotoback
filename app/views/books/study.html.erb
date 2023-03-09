@@ -33,7 +33,9 @@
               </div>
             <% end %>
           </div>
-          <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px; left: 46%;"data-action="click->book#flipCards">Flip</p>
+          <div class="d-flex justify-content-center " style="width:100%">
+            <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px;"data-action="click->book#flipCards"> Flip</p>
+          </div>
           <div class="flashcard__face flashcard__face--back" data-controller='speech' data-language='JP'>
             <p><%= card.furigana %></p>
             <span data-speech-target='word'><% if card.translation_word.split.size <= 3 %></span>
@@ -47,9 +49,13 @@
                 <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
               </div>
             <% end %>
-            <button class="btn btn-primary rounded-pill" style="position: absolute; bottom: 10px; left: 44px;" data-action="click->book#dontKnow">Don't know</button>
-            <button class="btn btn-primary rounded-pill px-4" style="position: absolute; bottom: 10px; right: 44px;" data-action="click->progress#progress click->book#destroy">Know</button>
-            <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px; left: 46%;"data-action="click->book#flipCards">Flip</p>
+            <div class="d-flex justify-content-between " style="width:100%">
+              <button class="btn btn-primary rounded-pill" style="position: absolute; bottom: 10px; left: 44px;" data-action="click->book#dontKnow">Don't know</button>
+              <div class="d-flex justify-content-center " style="width:100%">
+                <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px;"data-action="click->book#flipCards"> Flip</p>
+              </div>
+              <button class="btn btn-primary rounded-pill px-4" style="position: absolute; bottom: 10px; right: 44px; " data-action="click->progress#progress click->book#destroy">Know</button>
+            </div>
           </div>
         </div>
       <% end %>

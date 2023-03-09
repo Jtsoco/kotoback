@@ -63,17 +63,15 @@
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/484/484560.png", class: "flashcard-show-delete" %>
               <% end %>
             </div>
-            <p class="flashcard-show-flip btn btn-light rounded-pill" data-action="click->book#flipCards"> Flip</p>
+            <div class="d-flex justify-content-center " style="width:100%">
+              <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px;"data-action="click->book#flipCards"> Flip</p>
+            </div>
           </div>
-          <div class="flashcard__face flashcard__face--back"><% if card.translation_word.split.size == 1 %>
-              <p><%= card.furigana %></p>
+          <div class="flashcard__face flashcard__face--back">
+            <p><%= card.furigana %></p>
+            <div class="word-size" style="font-size: 24px;">
               <p><%= card.translation_word %></p>
-            <% else %>
-              <div class="word-size" style="font-size: 16px;">
-                <p><%= card.furigana %></p>
-                <p><%= card.translation_word %></p>
-              </div>
-            <% end %>
+            </div>
             <div id="flashcard-show-icons">
               <%= link_to edit_card_path(card) do %>
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828802.png", class:"flashcard-show-edit" %>
@@ -82,7 +80,9 @@
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/484/484560.png", class: "flashcard-show-delete" %>
               <% end %>
             </div>
-            <p class="flashcard-show-flip btn btn-light rounded-pill" data-action="click->book#flipCards">Flip</p>
+            <div class="d-flex justify-content-center " style="width:100%">
+              <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px;"data-action="click->book#flipCards"> Flip</p>
+            </div>
           </div>
         </div>
       <% end %>
