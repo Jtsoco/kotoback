@@ -35,19 +35,19 @@
           </div>
           <p class="flashcard-instruction-front btn btn-light rounded-pill" data-action="click->book#flipCards">Flip</p>
           <div class="flashcard__face flashcard__face--back" data-controller='speech' data-language='JP'><span data-speech-target='word'><% if card.translation_word.split.size == 1 %></span>
+              <p><%= card.furigana %></p>
               <%= card.translation_word %>
               <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
             <% else %>
               <div class="word-size" style="font-size: 16px;">
+                <p><%= card.furigana %></p>
                 <%= card.translation_word  %>
                 <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
               </div>
             <% end %>
-            <div id="flashcard-btn">
-              <button class="btn btn-primary rounded-pill" data-action="click->book#dontKnow">Don't know</button>
-              <button class="btn btn-primary rounded-pill px-4" data-action="click->progress#progress click->book#destroy">Know</button>
-              <p class="flashcard-instruction-back btn btn-light rounded-pill" data-action="click->book#flipCards">Flip</p>
-            </div>
+            <button class="btn btn-primary rounded-pill" style="position: absolute; bottom: 10px; left: 44px;" data-action="click->book#dontKnow">Don't know</button>
+            <button class="btn btn-primary rounded-pill px-4" style="position: absolute; bottom: 10px; right: 44px;" data-action="click->progress#progress click->book#destroy">Know</button>
+            <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px; left: 46%;"data-action="click->book#flipCards">Flip</p>
           </div>
         </div>
       <% end %>
