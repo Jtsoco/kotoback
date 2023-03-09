@@ -1,5 +1,5 @@
 <div id="class-container">
-  <h1 class="top-header">My Books 📚</h1>
+  <h1 style="margin-top:25px; margin-bottom:25px;">My Books 📚</h1>
   <div class="cards">
     <div class='upload-card'>
       <%# <i class=" upload-icon fa-solid fa-book-medical"></i> %>
@@ -13,15 +13,17 @@
         <div id="delete-icon">
         </div>
         <div>
-          <% if book.image_url %>
-            <%= image_tag(book.image_url) %>
-          <% else %>
-            <%= image_tag("https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg") %>
-          <% end %>
+          <div class="card-img">
+            <% if book.image_url %>
+              <%= image_tag(book.image_url)  %>
+            <% else %>
+              <%= image_tag("https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg") %>
+            <% end %>
+          </div>
           <div class="card-info">
             <h4><%= book.title %></h4>
-            <p><%= book.cards.pluck(:chapter).uniq.sort.last %> Chapters</p>
-            <p><%= book.cards.count %> cards</p>
+            <p>📘<%= book.cards.pluck(:chapter).uniq.sort.last %> Chapters</p>
+            <p><%= image_tag "https://cdn-icons-png.flaticon.com/512/3813/3813681.png", style:"width:25px;"%><%= book.cards.count %> cards</p>
           </div>
         </div>
         <% if book.processing == true %>
