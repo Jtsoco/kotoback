@@ -22,5 +22,6 @@ class TextTokenizerJapanese
     japanese_only = tokenized_filtered.select{|arr| @regex.match?(arr[0])}
     # reject special parenthesis
     japanese_only_filtered = japanese_only.reject{|arr| arr[0].include?("（") || arr[0].include?("）")}
+    japanese_only_filtered
   end
 end
