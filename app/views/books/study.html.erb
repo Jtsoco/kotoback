@@ -1,7 +1,7 @@
 <div id= "flashcard-container" data-controller="progress">
-  <h2 class="top-header"><%= @book.title %></h2>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <h2 style="padding-bottom: 25px;"><%= @book.title %></h2>
+  <div class="dropdown" style="padding-bottom: 10px;">
+    <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Chapter <%= params[:chapter] || "1" %>
     </button>
     <ul class="dropdown-menu">
@@ -39,5 +39,5 @@
       <% end %>
     <% end %>
   </div>
-  <%= link_to "See your cards", book_path(@book, chapter: params[:chapter]), class:"btn btn-primary", style:"align-self: center;" %>
+  <%= link_to "See your cards", book_path(@book, chapter: params[:chapter]), class:"btn btn-primary rounded-pill", style:"align-self: center;" %>
 </div>
