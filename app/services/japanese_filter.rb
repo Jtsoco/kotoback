@@ -4,6 +4,8 @@ class JapaneseFilter
     @hiragana_katakana_regex = /[\u3040-\u309F]|[\u30A0-\u30FF]/
     @no_hiragana_katakana_regex = /[^\u3040-\u309F]|[^\u30A0-\u30FF]/
     @filter_4000_common = []
+    @filter_6000_common = File.foreach('lib/assets/japanese_filters/6000japanese_words.txt').map { |line| line.split(' ') }.flatten
+    @newspaper_kanji = File.foreach('lib/assets/japanese_filters/newspaper_kanji.txt').map { |line| line.split(' ') }.flatten
   end
 
   def filter
@@ -15,7 +17,7 @@ class JapaneseFilter
     # maybe put a count before this and implement it as the last part in each array
     # to save time
     # TODO
-    one_word_version -= @filter_4000_common
+    one_word_version -= @filter_6000_common
     # count the unique words in teh non unique array
     unique_singular = no_single_letters.uniq
     # this should iterate over the unique, and count the equivalent words in the version that isn't unique, then put it into the end of the array at index 10
