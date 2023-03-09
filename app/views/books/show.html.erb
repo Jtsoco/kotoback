@@ -47,7 +47,6 @@
         <div class="flashcard-show" data-book-target="card" data-controller="book">
           <div class="flashcard__face flashcard__face--front">
             <div class="fc-text"><% if card.origin_word.split.size == 1 %>
-                <p><%= card.furigana %></p>
                 <p><%= card.origin_word %></p>
               <% else %>
                 <div class="word-size" style="font-size: 16px;">
