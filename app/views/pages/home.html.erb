@@ -1,71 +1,21 @@
 <div class='home-container'>
+  <%= image_tag "homepage-logo.png", class:"homepage-logo"%>
+  <h1 id="instructions-title">Turn your books into flashcards</h1>
   <div class='home-upload-form'>
     <%= render "shared/book_upload", book: @book %>
     <% if @book.manuscript.attached? %>
       <%= cl_image_path @book.manuscript.key %>
     <% end %>
   </div>
-  <%# <div class='language-dropdowns'> %>
-  <%# <div> %>
-  <%#= render "shared/origin_language_dropdown" %>
-  <%# </div> %>
-  <%#= render "shared/target_language_dropdown" %>
-  <%# <div>
+  <div class="features">
+    <div class="feature-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn-icons-png.flaticon.com/512/5020/5020671.png)">
+      Upload a book
     </div>
-  </div> %>
-  <h1 id="instructions-title">Turn your books into flashcards</h1>
-  <div class='home-content'>
-    <div class='instruction-image-side'>
-      <%= image_tag "screenshot1.png", class:"screenshot1"%>
-      <%= image_tag "warrior.png", class:"gorilla-logo"%>
+    <div class="feature-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn-icons-png.flaticon.com/512/5020/5020845.png)">
+      Study difficult words
     </div>
-    <div class='instruction1'>
-      <h4>1. Click on "Choose file" and select a book</h4>
+    <div class="feature-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn-icons-png.flaticon.com/512/5020/5020751.png)">
+      Enjoy Reading
     </div>
   </div>
-  <div class='home-content'>
-    <div class='instruction-image-side'>
-      <%= image_tag "screenshot1.png", class:"screenshot1"%>
-      <%= image_tag "superhero.png", class:"gorilla-logo-sh2"%>
-    </div>
-    <div class='instruction2'>
-      <h4>2. Click on "Create Book"</h4>
-    </div>
-  </div>
-  <div class='home-content'>
-    <div class='instruction-image-side'>
-      <%= image_tag "screenshot2.png", class:"screenshot2"%>
-      <%= image_tag "celebration.png", class:"gorilla-logo-sh3"%>
-    </div>
-    <div class='instruction3'>
-      <h4>3. Congrats! You created your first set of cards. Click on the deck you want to study.</h4>
-    </div>
-  </div>
-  <div class='home-content'>
-    <div class='instruction-image-side'>
-      <%= image_tag "screenshot3.png", class:"screenshot3"%>
-      <%= image_tag "reading.png", class:"gorilla-logo-sh4"%>
-    </div>
-    <div class='instruction4'>
-      <h4>4. Time to study. Choose what chapter you want to study and click on the flashcard to check the answer.</h4>
-    </div>
-  </div>
-  <div class='home-content'>
-    <div class='instruction-image-side'>
-      <%= image_tag "screenshot4.png", class:"screenshot4"%>
-      <%= image_tag "question.png", class:"gorilla-logo-5"%>
-      <%= image_tag "idea.png", class:"gorilla-logo-6"%>
-    </div>
-    <div class='instruction5'>
-      <h4>5. Select whether you know or don't know the answer.</h4>
-    </div>
-  </div>
-  <div class='home-content'>
-    <div class='instruction-image-side'>
-      <%= image_tag "screenshot4.png", class:"screenshot4"%>
-      <%= image_tag "meditation.png", class:"gorilla-logo-7"%>
-    </div>
-    <div class='instruction6'>
-      <h4>6. Enjoy and trust the process.</h4>
-    </div>
-  </div>
+</div>

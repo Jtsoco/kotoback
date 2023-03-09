@@ -3,7 +3,7 @@
 require "epub/parser"
 require "cloudinary"
 
-class EpubConverter
+class EpubConverterEng
   def initialize(book)
     @book = book
   end
@@ -31,44 +31,35 @@ class EpubConverter
     book.metadata.title # => Title string including all titles
     book.metadata.creators # => Creators(authors)
 
+    def header(page)
+      if page.content_document.nokogiri.search("h1").length.positive?
+        @h = "h1"
+      elsif page.content_document.nokogiri.search("h2").length.positive?
+        @h = "h2"
+      elsif page.content_document.nokogiri.search("h3").length.positive?
+        @h = "h3"
+      elsif page.content_document.nokogiri.search("h4").length.positive?
+        @h = "h4"
+      elsif page.content_document.nokogiri.search("h5").length.positive?
+        @h = "h5"
+      else
+        @h = "h6"
+      end
+    end
+
     title = book.metadata.title
     Dir.mkdir("app/assets/manuscripts/#{title}") unless Dir.exist?("app/assets/manuscripts/#{title}")
     book.each_page_on_spine do |page|
-      header_tag = header(page)
-      headers = page.content_document.nokogiri.search(header_tag)
-      doc = page.content_document.nokogiri
-      # chapters = []
-      headers.reverse.each_with_index do |header, index|
-        next if header.attr("id").strip.blank?
+      header(page)
+      h_count = page.content_document.nokogiri.search("#{@h}").length
+      p_count = page.content_document.nokogiri.search("p").length
 
-        content = doc.search("##{header.attr("id")} ~ p")
-
-        # if index == headers.length - 1
-        #   p css_selector = "##{header.attr("id")} ~ p"
-        #   debugger
-        # else
-        #   next_header = headers[index + 1]
-        #   next if next_header.attr("id").strip.blank?
-        #   content = content.search("p:not(##{next_header.attr("id")} ~ *)")
-        #   p css_selector = "##{header.attr("id")} ~ p:not(##{next_header.attr("id")} ~ *)"
-        # end
-        # content = page.content_document.nokogiri.search(css_selector)
-        next if content.empty?
-
-        # chapters << {title: header.text, content: content.text }
-        File.open("app/assets/manuscripts/#{title}/#{header.text}.html", "w") do |file|
-          file.write(content)
+      if h_count.positive? && p_count.positive?
+        File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("#{@h}").text}.html", "w") do |file|
+          file.write(page.content_document.nokogiri)
         end
-        # content.remove
-        File.join("app/assets/manuscripts/#{title}", "#{header.text}.html")
+        File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("#{@h}").text}.html")
       end
-
-      # if h_count.positive? && p_count.positive?
-      #   File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("#{@h}").text}.html", "w") do |file|
-      #     file.write(page.content_document.nokogiri)
-      #   end
-        # File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("#{@h}").text}.html")
-      # end
       # @cloud.manuscript.purge
       # Cloudinary::Uploader.destroy("#{@book.manuscript.key}.epub", :resource_type => 'raw')
       # File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
@@ -76,15 +67,6 @@ class EpubConverter
     end
     File.delete(*Dir["book_content.epub"]) # Delete book.epub
     return title
-  end
-
-  private
-
-  def header(page)
-    6.times do |i|
-      header_tag = "h#{6-i}"
-      return header_tag if page.content_document.nokogiri.search(header_tag).any?
-    end
   end
 end
 

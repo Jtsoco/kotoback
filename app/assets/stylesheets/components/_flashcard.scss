@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 }
 
 .scene {
@@ -42,7 +43,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  line-height: 260px;
+  padding-top: 103px;
   color: white;
   text-align: center;
   font-weight: bold;
@@ -83,6 +84,7 @@
 #flashcard-btn {
   display: flex;
   justify-content: space-around;
+  margin-top: 91px;
 }
 
 #show-container {
@@ -157,4 +159,45 @@
   color: black;
   top: 68%;
   right: 43%;
+}
+
+.add-flashcard {
+  width: 100%;
+  height: 100%;
+  border: 6px dashed;
+  color: #6e8898;
+  text-align: center;
+  font-size: 30px;
+}
+
+.add-flashcard a {
+  color: #6e8898;
+  text-decoration: none;
+  font-size: 121px;
+}
+
+.add-flashcard-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  color: #6e8898;
+  height: 136px;
+  width: 128px;
+  border-radius: 30px;
+  border: solid;
+  position: relative;
+  top: 6%;
+  left: 32%;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin: 120px;
+}
+
+.options {
+  grid-area: 1 / 1 / 1 / 2;
 }

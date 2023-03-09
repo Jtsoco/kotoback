@@ -1,28 +1,29 @@
 <nav class="navbar navbar-expand-sm sticky-top navbar-dark"style="background-color: #5EB1BF;">
   <div class="container">
-    <!-- Toggler/collapsibe Button for small screens -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myList"
                 aria-controls="myList" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- List of links -->
     <div class="collapse navbar-collapse" id="myList">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <%=link_to "Finished Cards", book_path(@book, chapter: params[:chapter], filter: "finished"), class:"nav-link", data: { turbo:false }, style:"color: white;"%>
+          <button class="rounded-pill" style="border-color:white;margin-inline: 6px;"><%=link_to "Finished Cards", book_path(@book, chapter: params[:chapter], filter: "finished"), class:"nav-link", data: { turbo:false }, style:"color: black;"%></button>
         </li>
         <li class="nav-item">
-          <%=link_to "Unfinished Cards", book_path(@book, chapter: params[:chapter], filter: "unfinished"), class:"nav-link", data: { turbo:false }, style:"color: white;"%>
+          <button class="rounded-pill" style="border-color:white;margin-inline: 6px;"><%=link_to "Unfinished Cards", book_path(@book, chapter: params[:chapter], filter: "unfinished"), class:"nav-link", data: { turbo:false }, style:"color: black;"%></button>
         </li>
         <li class="nav-item">
-          <%=link_to "All", book_path(@book, chapter: params[:chapter]), class:"nav-link", data: { turbo:false }, style:"color:white;"%>
+          <button class="rounded-pill" style="border-color:white;margin-inline: 6px;"><%=link_to "All", book_path(@book, chapter: params[:chapter]), class:"nav-link", data: { turbo:false }, style:"color:black;"%></button>
+        </li>
+        <li class="nav-item" style="padding-left: 720px;">
+          <button class="rounded-pill" style="margin-inline: 6px; background-color:#13293d;"><%=link_to "Back to study", study_book_path(@book, chapter: params[:chapter]), class:"nav-link", data: { turbo:false }, style:"color:white;"%></button>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 <div id= "show-container">
-  <div class="dropdown">
+  <div class="dropdown" style="padding-top:20px;">
     <button class="btn btn-secondary dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Chapter <%= params[:chapter] || "1" %>
     </button>
@@ -33,19 +34,27 @@
     </ul>
   </div>
   <div class="data" style="margin-top:20px; margin-bottom: 45px; display: flex; justify-content: space-between;width: 40%;">
-    <p style="font-size: x-large;"><%= image_tag "https://cdn-icons-png.flaticon.com/512/3813/3813681.png", class:"total-cards", style:"width:70px;"%><%= @cards.count %></p>
+    <p style="font-size: x-large;"><%= image_tag "https://cdn-icons-png.flaticon.com/512/3813/3813681.png", class:"total-cards", style:"width:70px;margin-left: 60px;"%><%= @cards.count %></p>
     <p style="font-size: x-large;"><%= image_tag "https://cdn-icons-png.flaticon.com/512/190/190411.png", class:"total-cards", style:"width:70px;"%><%= @deck.count - @unfinished.count %>/<%= @deck.count %></p>
-  </div>
-  <div class="side-buttons" style="width:60%; display: flex;
-    justify-content: space-between; margin:30px;">
-    <%=link_to "Back to study", study_book_path(@book, chapter: params[:chapter]), class:"btn btn-primary"%>
-    <%=link_to "Add Flashcard", new_book_card_path(@book), class:"btn btn-primary" %>
   </div>
   <div class="scene-show scene--card">
     <div class="flashcard-show-grid">
+      <div class='add-flashcard'>
+        <p style="padding-top: 6px;">Add Flashcard</p>
+        <button class="add-flashcard-btn"><%=link_to "+", new_book_card_path(@book)%></button>
+      </div>
       <% @cards.each do |card| %>
         <div class="flashcard-show" data-book-target="card" data-controller="book">
-          <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
+          <div class="flashcard__face flashcard__face--front">
+            <div class="fc-text"><% if card.origin_word.split.size == 1 %>
+                <p><%= card.origin_word %></p>
+              <% else %>
+                <div class="word-size" style="font-size: 16px;">
+                  <p><%= card.furigana %></p>
+                  <p><%= card.origin_word  %></p>
+                </div>
+              <% end %>
+            </div>
             <div id="flashcard-show-icons">
               <%= link_to edit_card_path(card) do %>
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828802.png", class:"flashcard-show-edit" %>
@@ -56,7 +65,15 @@
             </div>
             <p class="flashcard-show-flip btn btn-light rounded-pill" data-action="click->book#flipCards"> Flip</p>
           </div>
-          <div class="flashcard__face flashcard__face--back"><%= card.translation_word %>
+          <div class="flashcard__face flashcard__face--back"><% if card.translation_word.split.size == 1 %>
+              <p><%= card.furigana %></p>
+              <p><%= card.translation_word %></p>
+            <% else %>
+              <div class="word-size" style="font-size: 16px;">
+                <p><%= card.furigana %></p>
+                <p><%= card.translation_word %></p>
+              </div>
+            <% end %>
             <div id="flashcard-show-icons">
               <%= link_to edit_card_path(card) do %>
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828802.png", class:"flashcard-show-edit" %>
