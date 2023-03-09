@@ -1,5 +1,5 @@
 class TranslateJapanese
-  def initialized(chapter, source_lang, target_lang)
+  def initialize(chapter, source_lang, target_lang)
     @chapter = chapter
     @source_lang = source_lang
     @target_lang = target_lang
@@ -9,13 +9,13 @@ class TranslateJapanese
     # TODO check if it's better to put dictionary word into the translation
     single_word_array = @chapter.map {|word| word[0]}
     translation = DeepL.translate(single_word_array, @source_lang, @target_lang)
-    if translation.is_a?(Array) && !@array.empty?
+    if translation.is_a?(Array) && !@chapter.empty?
       hash_array = single_word_array.map.with_index do |word, index|
         {
           origin_word: word,
           translation_word: translation[index].text,
-          furigana: @chapter[8],
-          dictionary: @chapter[7],
+          furigana: @chapter[index][8],
+          dictionary: @chapter[index][7],
         }
       end
     elsif @array.length == 0
