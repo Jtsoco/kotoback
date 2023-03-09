@@ -34,7 +34,7 @@ class CardsController < ApplicationController
       # of where the code is being run
       # so with american servers it should be america
       # TODO set to timezone of user if possible in the DateTime.now area
-      next_appearance = {next_appearance: DateTime.now.tomorrow.beginning_of_day}
+      next_appearance = { next_appearance: DateTime.now.tomorrow.beginning_of_day }
       @card.update(next_appearance)
     else
       @card.update(card_params)
@@ -57,11 +57,10 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:origin_word, :translation_word, :chapter)
+    params.require(:card).permit(:origin_word, :translation_word, :chapter, :furigana)
   end
 
   def card_params_two
     params.require(:card).permit(:failed_today, :completed_today)
   end
-
 end

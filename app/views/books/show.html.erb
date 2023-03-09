@@ -45,7 +45,17 @@
       </div>
       <% @cards.each do |card| %>
         <div class="flashcard-show" data-book-target="card" data-controller="book">
-          <div class="flashcard__face flashcard__face--front"><%= card.origin_word %>
+          <div class="flashcard__face flashcard__face--front">
+            <div class="fc-text"><% if card.origin_word.split.size == 1 %>
+                <p><%= card.furigana %></p>
+                <p><%= card.origin_word %></p>
+              <% else %>
+                <div class="word-size" style="font-size: 16px;">
+                  <p><%= card.furigana %></p>
+                  <p><%= card.origin_word  %></p>
+                </div>
+              <% end %>
+            </div>
             <div id="flashcard-show-icons">
               <%= link_to edit_card_path(card) do %>
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828802.png", class:"flashcard-show-edit" %>
@@ -56,7 +66,15 @@
             </div>
             <p class="flashcard-show-flip btn btn-light rounded-pill" data-action="click->book#flipCards"> Flip</p>
           </div>
-          <div class="flashcard__face flashcard__face--back"><%= card.translation_word %>
+          <div class="flashcard__face flashcard__face--back"><% if card.translation_word.split.size == 1 %>
+              <p><%= card.furigana %></p>
+              <p><%= card.translation_word %></p>
+            <% else %>
+              <div class="word-size" style="font-size: 16px;">
+                <p><%= card.furigana %></p>
+                <p><%= card.translation_word %></p>
+              </div>
+            <% end %>
             <div id="flashcard-show-icons">
               <%= link_to edit_card_path(card) do %>
                 <%= image_tag "https://cdn-icons-png.flaticon.com/512/1828/1828802.png", class:"flashcard-show-edit" %>

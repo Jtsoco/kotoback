@@ -23,12 +23,26 @@
     <% else %>
       <% @array.each do |card| %>
         <div class="flashcard d-none" data-card-id="<%= card.id%>" data-book-target="card">
-          <div class="flashcard__face flashcard__face--front" data-controller='speech' data-language='EN'><span data-speech-target='word'><%= card.origin_word %></span>
-            <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
+          <div class="flashcard__face flashcard__face--front" data-controller='speech' data-language='EN'><span data-speech-target='word'><% if card.origin_word.split.size == 1 %></span>
+              <%= card.origin_word %>
+              <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
+            <% else %>
+              <div class="word-size" style="font-size: 16px;">
+                <%= card.origin_word  %>
+                <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
+              </div>
+            <% end %>
           </div>
           <p class="flashcard-instruction-front btn btn-light rounded-pill" data-action="click->book#flipCards">Flip</p>
-          <div class="flashcard__face flashcard__face--back" data-controller='speech' data-language='JP'><span data-speech-target='word'><%= card.translation_word %></span>
-            <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
+          <div class="flashcard__face flashcard__face--back" data-controller='speech' data-language='JP'><span data-speech-target='word'><% if card.translation_word.split.size == 1 %></span>
+              <%= card.translation_word %>
+              <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
+            <% else %>
+              <div class="word-size" style="font-size: 16px;">
+                <%= card.translation_word  %>
+                <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
+              </div>
+            <% end %>
             <div id="flashcard-btn">
               <button class="btn btn-primary rounded-pill" data-action="click->book#dontKnow">Don't know</button>
               <button class="btn btn-primary rounded-pill px-4" data-action="click->progress#progress click->book#destroy">Know</button>
