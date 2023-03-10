@@ -51,6 +51,7 @@ class BooksController < ApplicationController
     title = "processing"
     @book.title = title
     @book.user = current_user
+    @book.processing = false
     authorize @book
     if @book.save
       # service = EpubConverterEng.new(@book)

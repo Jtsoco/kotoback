@@ -41,10 +41,10 @@ class BookToCardsJa < ApplicationJob
         new_card(hash, index, book)
       end
     end
-    book.processing = false
-    book.save
-    fetch_book_cover = FetchBookCover.new(book)
-    fetch_book_cover.set_book_cover
+    # book.processing = false
+    # book.save
+    # fetch_book_cover = FetchBookCover.new(book)
+    # fetch_book_cover.set_book_cover
   end
 
 
