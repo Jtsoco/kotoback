@@ -53,12 +53,13 @@ class EpubConverterEng
       header(page)
       h_count = page.content_document.nokogiri.search("#{@h}").length
       p_count = page.content_document.nokogiri.search("p").length
-
       if h_count.positive? && p_count.positive?
-        File.open("app/assets/manuscripts/#{title}/#{page.content_document.nokogiri.search("#{@h}").text}.html", "w") do |file|
+        name = page.content_document.nokogiri.search("#{@h}").text
+        name = name[0, 10] if name.length > 10
+            File.open("app/assets/manuscripts/#{title}/#{name}.html", "w") do |file|
           file.write(page.content_document.nokogiri)
         end
-        File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("#{@h}").text}.html")
+        # File.join("app/assets/manuscripts/#{title}", "#{page.content_document.nokogiri.search("#{@h}").text}.html")
       end
       # @cloud.manuscript.purge
       # Cloudinary::Uploader.destroy("#{@book.manuscript.key}.epub", :resource_type => 'raw')
