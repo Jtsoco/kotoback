@@ -16,10 +16,10 @@ class FetchBookCover
       if json_book["ISBN:#{book_isbn}"].include?("cover")
       @book.image_url = json_book["ISBN:#{book_isbn}"]["cover"]["medium"]
       else
-        @book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
+        @book.image_url = "brown-book-cover-texture-1.jpg"
       end
     else
-      @book.image_url = "https://howtodrawforkids.com/wp-content/uploads/2022/07/how-to-draw-an-open-book.jpg"
+      @book.image_url = "brown-book-cover-texture-1.jpg"
     end
     @book.save
   end
