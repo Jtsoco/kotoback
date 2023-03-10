@@ -19,6 +19,7 @@ def fake_user_admin(first_name, last_name)
   user.first_name = first_name.capitalize
   user.last_name = last_name.capitalize
   user.password = "secret"
+  user.admin = true
   puts user
   user.save
 end
