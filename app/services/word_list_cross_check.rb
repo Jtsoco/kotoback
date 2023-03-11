@@ -4,12 +4,12 @@ class WordListCrossCheck
   end
 
   def cross_check
-    check_array = []
-    checked_array = @arrays.map do |array|
-      array -= check_array
-      check_array += array
-      array
+    check_chapter = []
+    checked_chapter = @arrays.map do |chapter|
+      chapter -= check_chapter
+      check_chapter += chapter
+      chapter
     end
-    checked_array
+    checked_chapter
   end
 end

@@ -6,7 +6,7 @@ class BookToCardsJa < ApplicationJob
   end
   def card_creator(book) #name pending
     # make the local directory
-    epub_converter = EpubConverter.new(book)
+    epub_converter = EpubConverterEng.new(book)
     title = epub_converter.call
     # calling the epub converter here instead of the controller
     # title = book.metadata.title
@@ -15,11 +15,10 @@ class BookToCardsJa < ApplicationJob
     File.delete(*Dir["app/assets/manuscripts/#{title}/*"]) # Delete html files from the new book directory
     Dir.rmdir("app/assets/manuscripts/#{title}")
     text_tokenizer_japanese = TextTokenizerJapanese.new(chapter_texts)
-    tokenized_arrays = text_tokenizer_japanese.tokenize_all
-    filtered_arrays = tokenized_arrays.map do |tokenized_array|
-      japanese_filter = JapaneseFilter.new(tokenized_array)
-      filter_fifty_array = japanese_filter.filter.first(50)
-      filtered = filter_fifty_array.map {|hash| [hash[:origin_word], hash[:furigana]]}
+    tokenized_hashes = text_tokenizer_japanese.tokenize_all
+    filtered_arrays = tokenized_hashes.map do |tokenized_hash|
+      japanese_filter = JapaneseFilter.new(tokenized_hash)
+      japanese_filter.filter
     end
 
     word_list_cross_check = WordListCrossCheck.new(filtered_arrays)
@@ -29,8 +28,9 @@ class BookToCardsJa < ApplicationJob
       if chapter.empty?
         # TODO improve this
       else
-      translation = TranslateJapanese.new(chapter, "JA", "EN")
-      translation_hashes = translation.translate
+
+        translation = TranslateJapanese.new(chapter, "JA", "EN")
+        translation.translate
       end
     end
     translated_chapter_arrays.compact!
@@ -41,10 +41,10 @@ class BookToCardsJa < ApplicationJob
         new_card(hash, index, book)
       end
     end
-    book.processing = false
-    book.save
-    fetch_book_cover = FetchBookCover.new(book)
-    fetch_book_cover.set_book_cover
+    # book.processing = false
+    # book.save
+    # fetch_book_cover = FetchBookCover.new(book)
+    # fetch_book_cover.set_book_cover
   end
 
 

@@ -51,10 +51,11 @@ class BooksController < ApplicationController
     title = "processing"
     @book.title = title
     @book.user = current_user
+    @book.processing = false
     authorize @book
     if @book.save
-      service = EpubConverterEng.new(@book)
-      service.call
+      # service = EpubConverterEng.new(@book)
+      # service.call
       BookToCardsJa.perform_later(@book)
       # book_to_cards_ja_trial = BookToCardsJaTrial.new(@book)
       # book_to_cards_ja_trial.card_creator

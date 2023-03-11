@@ -7,14 +7,14 @@ class TranslateJapanese
   def translate
     # grab the first word of each nested array
     # TODO check if it's better to put dictionary word into the translation
-    single_word_array = @chapter.map {|word| word[0]}
+    single_word_array = @chapter.map {|word| word[:origin_word]}
     translation = DeepL.translate(single_word_array, @source_lang, @target_lang)
     if translation.is_a?(Array) && !@chapter.empty?
       hash_array = single_word_array.map.with_index do |word, index|
         {
           origin_word: word,
           translation_word: translation[index].text,
-          furigana: @chapter[index][1],
+          furigana: @chapter[index][:furigana],
         }
       end
     elsif @array.length == 0

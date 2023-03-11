@@ -11,7 +11,7 @@ class BookToCards < ApplicationJob
 
   def card_creator(book) #name pending
     # make the local directory
-    epub_converter = EpubConverter.new(book)
+    epub_converter = EpubConverterEng.new(book)
     title = epub_converter.call
     # calling the epub converter here instead of the controller
     # title = @book.metadata.title

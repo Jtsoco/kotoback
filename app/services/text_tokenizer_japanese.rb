@@ -18,11 +18,12 @@ class TextTokenizerJapanese
   end
 
   def tokenize(text)
-    tokenized = @tagger.parse(text).map {|token| token}
-    tokenized_filtered = tokenized.map {|word| word.split(/[\s,]/)}
-    japanese_only = tokenized_filtered.select{|arr| @japanese_regex.match?(arr[0])}
-    # reject special parenthesis
-    japanese_only_filtered = japanese_only.reject{|arr| @punctuation_regex.match?(arr[0])}
-    japanese_only_filtered
+    @tagger.parse(text).map do |word|
+      spliced = word.split("\t").last.split(",")
+      {
+        origin_word: spliced[6],
+        furigana: spliced[7]
+      }
+    end
   end
 end
