@@ -19,7 +19,7 @@ export default class extends Controller {
     } else {
       voice.say(this.wordTarget.innerText)
     }
-    // 
+    //
     // voice.say(this.wordTarget.innerText)
     // voice.say("早い", {voiceURI: "Microsoft Ichiro - Japanese (Japan)"})
   }
