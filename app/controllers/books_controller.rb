@@ -1,6 +1,7 @@
 require "open-uri"
 
 class BooksController < ApplicationController
+
   def index
     @books = policy_scope(Book)
     @book = Book.new()
@@ -46,6 +47,7 @@ class BooksController < ApplicationController
   end
 
   def create
+
     @book = Book.new(book_params)
 
     title = "processing"

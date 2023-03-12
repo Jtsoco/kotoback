@@ -42,33 +42,30 @@ class EnglishFilter
     singular_words = @singular_words.map{ |word| word.downcase}
     singular_words -= @stop_words
     singular_words -= @top_names
-    split_text =  singular_words - @contractions
-    split_clean = split_text.map {|word| word.gsub(/(\W|\d)/, "")}
+    singular_words -= @contractions
+    singular_words.map! {|word| word.gsub(/(\W|\d)/, "")}
     # split_text = text.split(/(\\n)|[\s\-\_\/]/)
     # gets rid of non letters
     # makes all words singular
-    words = split_clean.map {|word| word.singularize}
+    singular_words.map! {|word| word.singularize}
     # reject 1 and 2 letter words
-    words = words.reject{|w| w.length.between?(1,2)}
+    singular_words.reject!{|w| w.length.between?(1,2)}
     # downcase the words
-    unique_words = words.uniq
-    unique_words = unique_words.reject {|word| word.empty?}
+    unique_words = singular_words.uniq
+    unique_words.reject! {|word| word.empty?}
     # make a hash with word count
     # in case of nil, compact!
     unique_words.compact!
-    @contractions.each do |word|
+    contractions_two = @contractions.map {|word| word.gsub("n't", "")}
+    unique_words -= contractions_two
       # noticed a pattern in dracula,
       # where contractions lose the t to make
-      # an accent. This accounts for some of that
-      word = word.gsub("n't", "")
-      unique_words = unique_words.reject {|unique| unique.include?(word)}
-    end
     # get rid of most common english words
     unique_words -= @english_10000
 
     unique_array = unique_words.map do |unique|
       {
-        count: words.count(unique),
+        count: singular_words.count(unique),
         word: unique
       }
     end

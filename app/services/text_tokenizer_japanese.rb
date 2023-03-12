@@ -1,7 +1,6 @@
 class TextTokenizerJapanese
   def initialize(array)
     @array = array
-    @tagger = Suika::Tagger.new
     # this regex finds japanese
     # katakana, hiragana, and kanji
     # and ignores most punctuation
@@ -18,7 +17,7 @@ class TextTokenizerJapanese
   end
 
   def tokenize(text)
-    @tagger.parse(text).map do |word|
+    TAGGER.parse(text).map do |word|
       spliced = word.split("\t").last.split(",")
       {
         origin_word: spliced[6],
