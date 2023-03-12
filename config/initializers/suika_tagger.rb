@@ -1,0 +1,1 @@
+TAGGER = Suika::Tagger.new
