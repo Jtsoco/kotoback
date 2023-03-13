@@ -23,23 +23,26 @@
     <% else %>
       <% @array.each do |card| %>
         <div class="flashcard d-none" data-card-id="<%= card.id%>" data-book-target="card">
-          <div class="flashcard__face flashcard__face--front" data-controller='speech' data-language='EN'><span data-speech-target='word'><% if card.origin_word.split.size == 1 %></span>
-              <%= card.origin_word %>
-              <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
-            <% else %>
-              <div class="word-size" style="font-size: 16px;">
-                <%= card.origin_word  %>
+          <div class="flashcard__face flashcard__face--front" data-controller='speech' data-language='EN'><span data-speech-target='word'><% if card.origin_word.split.size == 1 %>
+                <%= card.origin_word %>
                 <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
-              </div>
+              <% else %>
+                <div class="word-size" style="font-size: 16px;">
+                  <%= card.origin_word  %>
+                  <i class="fa-solid fa-volume-high" data-action='click->speech#talk'></i>
+                </div>
+              </span>
             <% end %>
           </div>
           <div class="d-flex justify-content-center " style="width:100%">
             <p class="btn btn-light rounded-pill" style="position: absolute; bottom: -4px;"data-action="click->book#flipCards"> Flip</p>
           </div>
           <div class="flashcard__face flashcard__face--back" data-language='JP'>
-            <div class="word-size" style="font-size: 24px;">
-              <p><%= card.furigana %></p>
-            </div>
+            <span data-speech-target='word' data-controller='speech' style="font-size: 16px">
+              <div class="word-size" style="font-size: 24px;">
+                <p><%= card.furigana %></p>
+              </div>
+            </span>
             <% if card.translation_word.split.length >= 3 %>
               <span data-speech-target='word' data-controller='speech' style="font-size: 16px">
                 <%= card.translation_word %>
