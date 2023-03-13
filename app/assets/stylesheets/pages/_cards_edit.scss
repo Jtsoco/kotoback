@@ -51,3 +51,18 @@
   height: 50px;
   width: 200px;
 }
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .edit-content {
+    padding: 4px;
+
+  }
+
+  .edit-word {
+    width: 440px;
+  }
+
+  .edit-cancel-button {
+    margin-right: 5px;
+  }
+}
