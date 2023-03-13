@@ -66,7 +66,7 @@ gem 'suika'
 # this is the gem that allows quick parsing of the japanese english dictionary
 # the JMdict
 # Using this we can create a dictionary for our use
-gem 'eiwa'
+# gem 'eiwa'
 # Sidekiq gems for asynchonous jobs
 # make sure to install redis on local computer, and that redis is on live server when using
 gem "sidekiq", "< 7"

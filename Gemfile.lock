@@ -119,8 +119,6 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    eiwa (0.1.0)
-      nokogiri
     epub-cfi (0.1.2)
     epub-parser (0.4.6)
       addressable (>= 2.3.5)
@@ -313,7 +311,6 @@ DEPENDENCIES
   deepl-rb
   devise
   dotenv-rails
-  eiwa
   epub-parser
   faker
   font-awesome-sass (~> 6.1)
