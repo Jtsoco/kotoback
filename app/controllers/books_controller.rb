@@ -58,7 +58,14 @@ class BooksController < ApplicationController
     if @book.save
       # service = EpubConverterEng.new(@book)
       # service.call
-      BookToCardsJa.perform_later(@book)
+      case @book.language_pair
+      when 'ja_en'
+        BookToCardsJa.perform_later(@book)
+      when 'en_ja'
+        BookToCards.perform_later(@book)
+      else
+        flash[:notice] = "An error occurred, we're sorry for the inconventionce"
+      end
       # book_to_cards_ja_trial = BookToCardsJaTrial.new(@book)
       # book_to_cards_ja_trial.card_creator
       # book_to_cards_ja = BookToCardsJa.new(@book)
@@ -85,6 +92,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :chapters, :manuscript)
+    params.require(:book).permit(:title, :chapters, :manuscript, :language_pair)
   end
 end

@@ -1,3 +1,4 @@
 <%= simple_form_for book do |f| %>
   <%= f.input :manuscript, input_html: { class: 'd-none', onchange: 'this.form.submit()' }, label_html: { class: 'home-upload-book' }, label: "Upload a book 📙" %>
+  <%= f.input :language_pair, collection: [["English to Japanese", 'en_ja'], ["Japanese to English", 'ja_en']], prompt: "Select your language" %>
 <% end %>
