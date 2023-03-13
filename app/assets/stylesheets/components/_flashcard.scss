@@ -28,6 +28,18 @@
   border: 2px solid white;
 }
 
+#not-know-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 70px;
+}
+
+#know-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 82px;
+}
+
 .flashcard.is-flipped {
   transform: translateX(-100%) rotateY(-180deg);
 }
@@ -200,4 +212,40 @@
 
 .options {
   grid-area: 1 / 1 / 1 / 2;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .book-title-study {
+    text-align: center;
+  }
+
+  .scene {
+    display: inline-block;
+    width: 330px;
+    height: 290px;
+  }
+
+  #not-know-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 18px;
+  }
+
+  #know-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 32px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .scene {
+    display: inline-block;
+    width: 500px;
+    height: 315px;
+
+
+  }
 }

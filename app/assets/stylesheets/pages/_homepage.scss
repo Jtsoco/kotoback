@@ -84,14 +84,6 @@
     grid-template-columns: 1fr;
   }
 
-  .features {
-    grid-template-columns: 1fr;
-    grid-gap: 30px;
-  }
-
-  #instructions-title {
-    text-align: center;
-  }
 }
 
 // Medium devices (tablets, 768px and up)
@@ -104,9 +96,7 @@
     text-align: center;
   }
 
-  .features {
-    grid-template-columns: 1fr 1fr;
-  }
+
 }
 
 // Large devices (desktops, 992px and up)
