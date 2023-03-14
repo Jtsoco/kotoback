@@ -33,9 +33,15 @@
       <% end %>
     </ul>
   </div>
-  <div class="data" style="margin-top:20px; margin-bottom: 45px; display: flex; justify-content: space-between;width: 40%;">
-    <p style="font-size: x-large;"><%= image_tag "https://cdn-icons-png.flaticon.com/512/3813/3813681.png", class:"total-cards", style:"width:70px;margin-left: 60px;"%><%= @cards.count %></p>
-    <p style="font-size: x-large;"><%= image_tag "https://cdn-icons-png.flaticon.com/512/190/190411.png", class:"total-cards", style:"width:70px;"%><%= @deck.count - @unfinished.count %>/<%= @deck.count %></p>
+  <div class="data">
+    <div class="data-stats">
+      <p><%= image_tag "https://cdn-icons-png.flaticon.com/512/3813/3813681.png", class:"total-cards", style:"width:70px;"%></p>
+      <p class="data-total"><%= @cards.count %></p>
+    </div>
+    <Div class="data-stats">
+      <p><%= image_tag "https://cdn-icons-png.flaticon.com/512/190/190411.png", class:"total-cards", style:"width:70px;"%></p>
+      <p class="data-not-known"><%= @deck.count - @unfinished.count %>/<%= @deck.count %></p>
+    </div>
   </div>
   <div class="scene-show scene--card">
     <div class="flashcard-show-grid">
