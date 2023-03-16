@@ -72,10 +72,16 @@ gem 'suika'
 gem "sidekiq", "< 7"
 gem "sidekiq-failures", "~> 1.0"
 
-
+# finding the memory problems
+gem 'derailed_benchmarks', group: :development
+gem 'stackprof', group: :development
 
 # Faker gem
 gem "faker"
+
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0.0'
+end
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
