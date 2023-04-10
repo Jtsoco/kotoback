@@ -38,7 +38,7 @@ class BookToCardsJa < ApplicationJob
       end
     end
     translated_chapter_arrays.compact!
-    book.title = title
+    book.title = $title #using a global variable, it works but an alternative might be preferable
     book.save
     translated_chapter_arrays.each_with_index do |array, index|
       array.each do |hash|
