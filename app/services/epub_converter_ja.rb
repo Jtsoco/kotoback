@@ -3,7 +3,7 @@
 require "epub/parser"
 require "cloudinary"
 
-class EpubConverterEng  
+class EpubConverterJa  
   def initialize(book)
     @book = book
   end
@@ -33,15 +33,16 @@ class EpubConverterEng
     book.metadata.creators # => Creators(authors)
 
     def header(page)
-      if page.content_document.nokogiri.search("h1").any? && page.content_document.nokogiri.search("h1").text.match?(/\d*\s*chapter\s*\d*|prologue|epilogue|\d*/i)
+      chapter_regex = /プロローグ|(第|\u7B2C)*([\u4e00]|[\u4E8C]|[\u4E09]|[\u56DB]|[\u4e94]|[\u516D]|[\u4E03]|[\u516B]|[\u4E5D]|[\u5341]|[\u767e])(場|\u5834)*|エピローグ/
+      if page.content_document.nokogiri.search("h1").any? && page.content_document.nokogiri.search("h1").text.match?(chapter_regex)
         @h = "h1"
-      elsif page.content_document.nokogiri.search("h2").any? && page.content_document.nokogiri.search("h2").text.match?(/\d*\s*chapter\s*\d*|prologue|epilogue|\d*/i)
+      elsif page.content_document.nokogiri.search("h2").any? && page.content_document.nokogiri.search("h2").text.match?(chapter_regex)
         @h = "h2"
-      elsif page.content_document.nokogiri.search("h3").any? && page.content_document.nokogiri.search("h3").text.match?(/\d*\s*chapter\s*\d*|prologue|epilogue|\d*/i)
+      elsif page.content_document.nokogiri.search("h3").any? && page.content_document.nokogiri.search("h3").text.match?(chapter_regex)
         @h = "h3"
-      elsif page.content_document.nokogiri.search("h4").any? && page.content_document.nokogiri.search("h4").text.match?(/\d*\s*chapter\s*\d*|prologue|epilogue|\d*/i)
+      elsif page.content_document.nokogiri.search("h4").any? && page.content_document.nokogiri.search("h4").text.match?(chapter_regex)
         @h = "h4"
-      elsif page.content_document.nokogiri.search("h5").any? && page.content_document.nokogiri.search("h5").text.match?(/\d*\s*chapter\s*\d*|prologue|epilogue|\d*/i)
+      elsif page.content_document.nokogiri.search("h5").any? && page.content_document.nokogiri.search("h5").text.match?(chapter_regex)
         @h = "h5"
       # elsif page.content_document.nokogiri.search("h6").any? && page.content_document.nokogiri.search("h6").text.match?(/\d*\s*chapter\s*\d*|prologue|epilogue|\d*/i)
         # @h = "h6"
