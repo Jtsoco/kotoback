@@ -8,10 +8,12 @@ Upload a book.
 ![trimmed_language_select](https://github.com/user-attachments/assets/89d94334-320b-4a12-bea1-8083fcdaeeac)
 
 Select flashcards organized by book.
+
 <img width="1357" alt="my_books" src="https://github.com/user-attachments/assets/db187ffb-75b2-4d29-bf0d-c04e5c6f3d89">
 
 
 When it is finished processing, it is accessible.
+
 <img width="425" alt="book_done" src="https://github.com/user-attachments/assets/2441c23b-d816-4aff-a505-b281daee1c1f">
 
 There is a page to manage flashcards. Update, Delete, Create new ones.
