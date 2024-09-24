@@ -4,6 +4,7 @@ Kotoback is an app that turns Japanese ebooks into Japanese-English flashcards d
 Kotoback takes the most frequent uncommon words that appears in the book and organizes them per book and per chapter into a flashcard deck. Duplicate words only appear once, in the earliest chatper they appear in. The freetier of deepl's api was used for the translations.
 
 Upload a book.
+
 ![trimmed_language_select](https://github.com/user-attachments/assets/89d94334-320b-4a12-bea1-8083fcdaeeac)
 
 Select flashcards organized by book.
